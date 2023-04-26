@@ -17,7 +17,8 @@
 [osh8242](https://github.com/osh8242)
 [hyunsohyun](https://github.com/hyunsohyun)
 [euizin](https://github.com/euizin)
-~~[devjangdae](https://github.com/devjangdae)~~
+[NamDW96](https://github.com/NamDW96)
+
 
 
 ##  google style guide
