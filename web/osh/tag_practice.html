@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<head>
+    <title>
+        HTML 태그 연습
+    </title>
+    <style>
+        h1 {
+            color: brown;
+            font-size: 6em;
+            font-family: 'Times New Roman', Times, serif;
+            text-align: center;        
+        }
+        p {
+            background-color: antiquewhite;
+            font-weight: bold;
+            padding-top: 1em;
+            padding-bottom: 1em;
+            margin-left: 1em;
+            margin-right: 1em;               
+        }
+        span {
+            text-decoration: underline;      
+                            
+        }
+        td {
+            border: dashed;
+            border-radius: 30%;    
+            top: 10%;
+            left: 20%;
+            right: 30%;
+            bottom: 40%;
+        }
+        img {
+            position: relative;
+            opacity: 30%;
+            z-index: -1;
+        }        
+
+    </style>
+</head>
+
+<body>
+    <h1>Hello World!!</h1>
+    <hr>
+    <span>환영합니다~~</span>
+    <div>
+        구획이 나누어집니다....
+        <p id="image">
+            단락을 나눕니다.<br>
+            <hr>
+            <a href="https://www.naver.com">네이버 링크</a>
+            <br>머쓱이!!
+            <img src="meosseuki.png" alt="이미지 로딩실패">
+
+        </p>
+        <p>
+                새로운 단락입니다<br>
+            <ul>
+                <li>ul 넘버원 </li>
+                <li>ul 넘버투</li> 
+            </ul>
+
+            <table>
+                <tr>
+                    <td>1행 1열</td><td>1행 2열</td>
+                </tr>
+                <tr>
+                    <td>2행 1열</td><td>2행 2열</td>
+                </tr>
+            </table>
+        </p>
+    </div>
+    <div>
+        <form>
+            <label for="text">텍스트 입력</label>
+            <input name="text" placeholder="인풋">
+            <select>
+                <option>옵션1</option>
+                <option>옵션2</option>
+                <option>옵션3</option>
+            </select>
+            <br><br>
+            <textarea placeholder="텍스트영역"></textarea>
+            <button>버튼</button>
+            
+
+        </form>
+
+    </div>
+    
+</body>
