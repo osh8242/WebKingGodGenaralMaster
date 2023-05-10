@@ -23,3 +23,9 @@
 hs_err_pid*
 replay_pid*
 /.metadata/
+
+# 인텔리제이
+.idea/*.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
