@@ -25,7 +25,7 @@
     startY = e.clientY;
     obj = cv.getContext("2d");
     obj.moveTo(startX,startY);
-  };
+  }
   function mouseMove(e){
     e.preventDefault();
     if(isDrawing){
@@ -39,7 +39,7 @@
       obj.moveTo(startX,startY);
     }
   }
-  function mouseUp(e){
+  function mouseUp(){
     isDrawing = false;
   }
 </script>

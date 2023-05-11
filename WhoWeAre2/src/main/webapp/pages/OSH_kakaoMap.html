@@ -36,10 +36,10 @@
 
             // 클릭한 위도, 경도 정보를 가져옵니다
             let latlng = mouseEvent.latLng;
-            if(isExistMarker == false){
+            if(!isExistMarker){
                 marker.setMap(map);
                 isExistMarker = true;
-            };
+            }
 
             // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);
@@ -48,7 +48,7 @@
 
         });
 
-        kakao.maps.event.addListener(marker, 'click', function(e){
+        kakao.maps.event.addListener(marker, 'click', function(){
             marker.setMap(null);
             isExistMarker = false;
         });
