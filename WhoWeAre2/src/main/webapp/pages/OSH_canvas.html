@@ -1,15 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>승환이의 CANVAS</title>
+<style>
+    body {
+        background-color: #f1f1f1;
+        font-family: Arial, sans-serif;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .canvas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .menuBar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    margin-bottom: 10px;
+    }
+
+    .option {
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .option label {
+        margin-right: 5px;
+    }
+
+    .drawingField {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    #myCanvas {
+        border: 1px solid black;
+        background-color: #fff;
+        cursor: crosshair;
+    }
+</style>
 </head>
 
 <body>
 <h3>그림판 그리기</h3>
-<iframe src="OSH_canvas_board.html" style="width:1200px; height:720px;">
+<div class="canvas">
+<div class="menuBar">
+    <div class="option">
+        <label for="selColor">색상:</label>
+        <input type="color" id="selColor" value="black">
+    </div>
+    <div class="option">
+        <label for="selLineWidth">굵기:</label>
+        <input type="number" id="selLineWidth" value="5">
+    </div>
+</div>
+<div class="drawingField">
+    <canvas id="myCanvas" width="1000" height="600"></canvas>
+</div>
+</div>
 
-</iframe>
-
+<script src="OSH_canvas.js"></script>
 </body>
 </html>
