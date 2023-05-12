@@ -1,3 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+</head>
 <style>
     body {
         background-color: #f1f1f1;
@@ -44,26 +50,62 @@
         cursor: crosshair;
     }
 </style>
+<script>
+    function download() {
+        let dl = document.getElementById("download");
+        let image = document.getElementById("myCanvas")
+            .toDataURL("image/png")
+            .replace("image/png", "image/octet-stream");
+        dl.setAttribute("href", image);
+        dl.setAttribute("download","image-name.png");
+    }
+
+    function clearCanvas(){
+        let obj = document.getElementById("myCanvas").getContext("2d");
+        obj.clearRect(0,0,cv.width,cv.height);
+    }
+</script>
 </head>
 
 <body>
 <h3>그림판 그리기</h3>
 <div class="canvas">
-<div class="menuBar">
-    <div class="option">
-        <label for="selColor">색상:</label>
-        <input type="color" id="selColor" value="black">
+    <div class="menuBar">
+        <div class="option">
+            <label for="selColor">색상:</label>
+            <input type="color" id="selColor" value="black">
+        </div>
+        <div class="option">
+            <label for="selLineWidth">굵기:</label>
+            <input type="number" id="selLineWidth" value="5">
+        </div>
+        <div class="option select">
+            <div class="line">
+                <img src="line.png">
+            </div>
+            <div class="circle">
+                <img src="circle.png">
+            </div>
+            <div class="rectagle">
+                <img src="rectangle.png">
+            </div>
+        </div>
     </div>
-    <div class="option">
-        <label for="selLineWidth">굵기:</label>
-        <input type="number" id="selLineWidth" value="5">
+    <div class="drawingField">
+        <canvas id="myCanvas" width="1000" height="600"></canvas>
     </div>
-</div>
-<div class="drawingField">
-    <canvas id="myCanvas" width="1000" height="600"></canvas>
-</div>
+    <div>
+        <a id="clearBtn">
+            <button type="button" onclick="clearCanvas()" >Clear</button>
+        </a>
+        <a id="download">
+            <button type="button" onclick="download()">Image Download</button>
+        </a>
+    </div>
 </div>
 
-<script src="OSH_canvas.js"></script>
+<script src="OSH_canvas.js">
+</script>
+
 </body>
 </html>

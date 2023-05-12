@@ -2,11 +2,17 @@ let cv = document.getElementById("myCanvas");
 let obj = cv.getContext("2d"); // 그림 객체
 let startX, startY; // 시작좌표
 let isDrawing = false; // 그리기 상태
+let downBtn = document.getElementById("download").childNodes[0];
+let clearBtn = document.getElementById("clearBtn").childNodes[0];
 
 
 cv.addEventListener('mousedown', function(e) {mouseDown(e)}, false);
 cv.addEventListener('mousemove', function(e) {mouseMove(e)}, false);
 cv.addEventListener('mouseup', function(e) {mouseUp(e)}, false);
+
+clearBtn.addEventListener('click',clearCanvas());
+downBtn.addEventListener('click',download());
+
 
 function draw(curX, curY){
   obj.beginPath();
@@ -33,3 +39,4 @@ function mouseMove(e){
 function mouseUp(){
   isDrawing = false;
 }
+
