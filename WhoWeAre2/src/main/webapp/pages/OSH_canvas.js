@@ -18,9 +18,9 @@ function draw(curX, curY){
   obj.beginPath();
   obj.strokeStyle = document.getElementById("selColor").value;
   obj.lineWidth = document.getElementById("selLineWidth").value;
-	obj.moveTo(startX, startY);
-	obj.lineTo(curX, curY);
-	obj.stroke();
+  obj.moveTo(startX, startY);
+  obj.lineTo(curX, curY);
+  obj.stroke();
 }
 
 function mouseDown (e){
@@ -39,4 +39,3 @@ function mouseMove(e){
 function mouseUp(){
   isDrawing = false;
 }
-
