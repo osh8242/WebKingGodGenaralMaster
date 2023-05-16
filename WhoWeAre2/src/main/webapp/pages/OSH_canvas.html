@@ -3,71 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Canvas</title>
-</head>
-<style>
-    body {
-        background-color: #f1f1f1;
-        font-family: Arial, sans-serif;
-    }
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
 
-    h3 {
-        text-align: center;
-    }
+        h3 {
+            text-align: center;
+        }
 
-    .canvas {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    }
+        .canvas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
 
-    .menuBar {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    max-width: 1000px;
-    margin-bottom: 10px;
-    }
-
-    .option {
+        .menuBar {
         display: flex;
         align-items: center;
-        margin-right: 10px;
-    }
-
-    .option label {
-        margin-right: 5px;
-    }
-
-    .drawingField {
         width: 100%;
         max-width: 1000px;
-        margin: 0 auto;
-    }
+        margin-bottom: 10px;
+        }
 
-    #myCanvas {
-        border: 1px solid black;
-        background-color: #fff;
-        cursor: crosshair;
-    }
-    .bottom {
-        margin: 10px;
-    }
-</style>
-<script>
-    function download() {
-        let dl = document.getElementById("download");
-        let image = document.getElementById("myCanvas")
-            .toDataURL("image/png")
-            .replace("image/png", "image/octet-stream");
-        dl.setAttribute("href", image);
-        dl.setAttribute("download","image-name.png");
-    }
+        .option {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
 
-    function clearCanvas(){
-        let obj = document.getElementById("myCanvas").getContext("2d");
-        obj.clearRect(0,0,cv.width,cv.height);
-    }
-</script>
+        .option label {
+            margin-right: 5px;
+        }
+
+        .drawingField {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        #myCanvas {
+            border: 1px solid black;
+            background-color: #fff;
+            cursor: crosshair;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -83,14 +65,17 @@
             <input type="number" id="selLineWidth" value="5">
         </div>
         <div class="option select">
+            <div class="free">
+                <img src="free.png" alt="loading fail" id="free">
+            </div>
             <div class="line">
-                <img src="line.png">
+                <img src="line.png" alt="loading fail" id="line">
             </div>
             <div class="circle">
-                <img src="circle.png">
+                <img src="circle.png" alt="loading fail" id="circle">
             </div>
-            <div class="rectagle">
-                <img src="rectangle.png">
+            <div class="rectangle">
+                <img src="rectangle.png" alt="loading fail" id="rectangle">
             </div>
         </div>
     </div>
@@ -98,11 +83,11 @@
         <canvas id="myCanvas" width="1000" height="600"></canvas>
     </div>
     <div>
-        <a id="clearBtn">
-            <button type="button" onclick="clearCanvas()" >Clear</button>
+        <a id="clear">
+            <button type="button">Clear</button>
         </a>
         <a id="download">
-            <button type="button" onclick="download()">Image Download</button>
+            <button type="button">Image Download</button>
         </a>
     </div>
 </div>

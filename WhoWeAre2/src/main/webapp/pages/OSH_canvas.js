@@ -1,41 +1,104 @@
-let cv = document.getElementById("myCanvas");
-let obj = cv.getContext("2d"); // 그림 객체
-let startX, startY; // 시작좌표
-let isDrawing = false; // 그리기 상태
-let downBtn = document.getElementById("download").childNodes[0];
-let clearBtn = document.getElementById("clearBtn").childNodes[0];
+let canvas = document.getElementById("myCanvas");
+let context = canvas.getContext("2d");
+let clearBtn = document.getElementById('clear');
+let downloadBtn = document.getElementById('download');
+let startX, startY;
+let drawingMode = "line";  // 기본 그리기 모드는 선(line)으로 설정
+let rectangles = [];
+let circles = [];
+let lines = [];
 
+function setDrawingMode(mode) {
+  drawingMode = mode;
+}
+let line = document.getElementById('line');
+line.addEventListener("click", function (e){
+  setDrawingMode("line");
+});
 
-cv.addEventListener('mousedown', function(e) {mouseDown(e)}, false);
-cv.addEventListener('mousemove', function(e) {mouseMove(e)}, false);
-cv.addEventListener('mouseup', function(e) {mouseUp(e)}, false);
+let circle = document.getElementById('circle');
+circle.addEventListener("click", function (e){
+  setDrawingMode("circle");
+});
 
-clearBtn.addEventListener('click',clearCanvas());
-downBtn.addEventListener('click',download());
+let rectangle = document.getElementById('rectangle');
+rectangle.addEventListener("click", function (e){
+  setDrawingMode("rectangle");
+});
 
+let free = document.getElementById('free');
+free.addEventListener("click", function (e){
+  setDrawingMode("free");
+});
 
-function draw(curX, curY){
-  obj.beginPath();
-  obj.strokeStyle = document.getElementById("selColor").value;
-  obj.lineWidth = document.getElementById("selLineWidth").value;
-  obj.moveTo(startX, startY);
-  obj.lineTo(curX, curY);
-  obj.stroke();
+clearBtn.addEventListener("click", clearCanvas);
+downloadBtn.addEventListener("click", download);
+
+function clearCanvas(){
+  context.clearRect(0,0,canvas.width,canvas.height);
 }
 
-function mouseDown (e){
-  isDrawing = true;
-  startX = e.offsetX;
-  startY = e.offsetY;
+function download() {
+  let dl = document.getElementById("download");
+  let image = document.getElementById("myCanvas")
+      .toDataURL("image/png")
+      .replace("image/png", "image/octet-stream");
+  dl.setAttribute("href", image);
+  dl.setAttribute("download","image-name.png");
 }
-function mouseMove(e){
-  if(!isDrawing) return;
-  let curX = e.offsetX;
-  let curY = e.offsetY;
-  draw(curX, curY);
-  startX = curX;
-  startY = curY;  
+
+canvas.addEventListener("mousedown", startDrawing);
+canvas.addEventListener("mousemove", moving);
+canvas.addEventListener("mouseup", stopDrawing);
+canvas.addEventListener("mouseout", stopDrawing);
+
+
+
+function startDrawing(event) {
+  startX = event.clientX - canvas.offsetLeft;
+  startY = event.clientY - canvas.offsetTop;
 }
-function mouseUp(){
-  isDrawing = false;
+
+function moving(event) {
+  if (startX === undefined || startY === undefined) return;
+
+  let currentX = event.clientX - canvas.offsetLeft;
+  let currentY = event.clientY - canvas.offsetTop;
+
+  context.clearRect(0, 0, canvas.width, canvas.height);
+
+  if (drawingMode === "line") {
+    // 선 그리기
+    context.beginPath();
+    context.moveTo(startX, startY);
+    context.lineTo(currentX, currentY);
+    context.stroke();
+  } else if (drawingMode === "circle") {
+    // 원 그리기
+    let radius = Math.sqrt(
+        Math.pow(currentX - startX, 2) + Math.pow(currentY - startY, 2)
+    );
+    context.beginPath();
+    context.arc(startX, startY, radius, 0, 2 * Math.PI);
+    context.stroke();
+  } else if (drawingMode === "rectangle") {
+    // 사각형 그리기
+    let width = currentX - startX;
+    let height = currentY - startY;
+    context.strokeRect(startX, startY, width, height);
+  } else if (drawingMode === "free"){
+    context.beginPath();
+    context.strokeStyle = document.getElementById("selColor").value;
+    context.lineWidth = document.getElementById("selLineWidth").value;
+    context.moveTo(startX, startY);
+    context.lineTo(currentX, currentY);
+    context.stroke();
+    startX = currentX;
+    startY = currentY;
+  }
+}
+
+function stopDrawing() {
+  startX = undefined;
+  startY = undefined;
 }
