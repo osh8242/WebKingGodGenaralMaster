@@ -1,0 +1,257 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>Team3Web</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="favicon.ico">
+
+<!--Google Font link-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/slick.css">
+<link rel="stylesheet" href="assets/css/slick-theme.css">
+<link rel="stylesheet" href="assets/css/animate.css">
+<link rel="stylesheet" href="assets/css/iconfont.css">
+<link rel="stylesheet" href="assets/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="assets/css/magnific-popup.css">
+<link rel="stylesheet" href="assets/css/bootsnav.css">
+
+<!--For Plugins external css-->
+<link rel="stylesheet" href="assets/css/plugins.css" />
+
+<!--Theme custom css -->
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!--Theme Responsive css-->
+<link rel="stylesheet" href="assets/css/responsive.css" />
+<style type="text/css">
+	.filter-item {
+	  display: block;
+	  margin-bottom: 10px;
+	}
+	
+	.filter-item.hide {
+	  display: none;
+	}
+</style>
+<script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar-collapse" data-offset="100">
+
+		<section id="canvas" class="portfolio margin-top-120">
+			<div class="container">
+				<div class="row">
+					<div class="main-portfolio roomy-80">
+						<div class="col-md-4">
+							<div class="head_title text-left sm-text-center wow fadeInDown">
+								<h2>Canvas</h2>
+							</div>
+						</div>
+						
+						<div><!-- package -->
+						<div class="col-md-8">
+							<div class="filter-canvas-buttons text-right sm-text-center">
+								<button class="btn button" data-filter="all">All</button>
+								<button class="btn button" data-filter="drawing">Drawing</button>
+								<button class="btn button" data-filter="myroro">Myroro</button>
+							</div>
+						</div>
+
+						<div style="clear: both;"></div>
+
+						<div class="filter-canvas-items">
+							<div class="filter-canvas-item all drawing"><!-- 그림판 -->
+								그림판 그리기
+								<div>
+									색상 : <select id="selcolor">
+										<option value="black">검정</option>
+										<option value="red">빨강</option>
+										<option value="green">초록</option>
+										<option value="blue">파랑</option>
+										<option value="magenta">분홍</option>
+									</select> 굵기 : <select id="selwidth">
+										<option value="1">얇게</option>
+										<option value="3">중간</option>
+										<option value="5">굵게</option>
+									</select><br>
+								</div>
+	
+								<div>
+									<canvas id="mycanvas" width="1000" height="500" style="border: 1px solid #000000;"></canvas>
+									<br> 
+									<a class="btn btn-default" id="clear">Clear</a>
+									<a id="download" class="btn btn-default download">Download</a>
+								</div>
+							</div>
+							
+							<div class="filter-canvas-item all myroro"><!-- 날아라 케로로 -->
+								날아라 케로로
+								<div>
+									캐릭터 : 
+									<select id="selroro">
+										<option value="oh" selected>오승환</option>
+										<option value="kim">김의진</option>
+										<option value="hyun">현소현</option>
+										<option value="nam">남동우</option>
+										<option value="seo">서장대</option>
+									</select> 
+									배경 : 
+									<select id="selbg">
+										<option value="class" selected>교실</option>
+										<option value="sky">하늘</option>
+										<option value="fire">불구덩이</option>
+									</select><br>
+								</div>
+								<br>
+								<div>
+									<canvas id="flyingcanvas" width="1000px" height="500px"></canvas>
+									<br> 
+									<a onclick="downloadCanvas(this)" class="btn btn-default download">Download</a>
+								</div>
+							</div>
+						</div>
+						
+						<script>
+							/* 첫번재 그림판 */
+						 	let canvas;
+						 	let ctx;
+						 	let sx, sy; // 현재 위치
+						 	let drawing = false; // 현재 그리는 중인가?
+
+							window.onload = function() {
+								canvas = document.getElementById("mycanvas");
+								ctx = canvas.getContext("2d");
+								
+ 								if (canvas == null || canvas.getContext == null)
+								ctx.lineCap = "round";
+
+								// 현재 위치를 저장한다.
+								canvas.onmousedown = function(e) {
+									e.preventDefault();
+									sx = e.offsetX;
+									sy = e.offsetY;
+									drawing = true;
+								}
+
+ 								// 현재 위치에서 새로 이동한 곳까지 선을 그린다.
+								canvas.onmousemove = function(e) {
+									if (drawing) {
+										e.preventDefault();
+										ctx.beginPath();
+										ctx.moveTo(sx, sy);
+										sx = e.offsetX;
+										sy = e.offsetY;
+										ctx.lineTo(sx, sy);
+										ctx.stroke();
+									}
+								}
+
+								// 그리기를 종료한다.
+								canvas.onmouseup = function(e) {
+									drawing = false;
+								}
+								
+							}
+
+							// 선 색상 변경
+							let selcolor = document.getElementById("selcolor");
+							selcolor.onchange = function(e) {
+								ctx.strokeStyle = selcolor.value;
+							}
+
+							// 선 굵기 변경
+							let selwidth = document.getElementById("selwidth");
+							selwidth.onchange = function(e) {
+								ctx.lineWidth = selwidth.value;
+							} 
+
+							// 모두 지우기
+ 							let btnclear = document.getElementById("clear");
+							btnclear.onclick = function(e) {
+								ctx.clearRect(0, 0, canvas.width, canvas.height);
+							}
+							
+							// 이미지 다운로드
+ 							let btndownload = document.getElementById("download");
+ 							btndownload.onclick = function(e) {
+ 								let findcanvas = findSiblingCanvas(this);
+ 							    console.log(findcanvas);
+ 							    let image = findcanvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+ 							    console.log(image);
+ 							    btndownload.setAttribute("href", image);
+ 							    btndownload.setAttribute("download","downloadImage.png"); 
+							}
+							
+							//형제중 canvas를 찾는 
+							function findSiblingCanvas(element) {
+								let siblings = Array.from(element.parentNode.children); // 부모 요소의 모든 자식 요소 가져오기
+								let canvasElements = siblings.filter(function(sibling) {
+									return sibling.tagName.toLowerCase() === 'canvas'; // canvas 태그인지 확인
+								});
+								return canvasElements[0];
+							} 
+							
+							
+							/* 두번째 날아라 케로로 */
+							let canvas2 = document.querySelector("#flyingcanvas");
+							let context = canvas2.getContext("2d");
+							
+/* 							window.onload = function() {
+								//커서이미지					         
+								let followImg = new Image();
+								followImg.src = "assets/images/flyingroro.png";
+								
+								let backImg = new Image();
+								backImg.src = "assets/images/class.jpg";
+								
+								//이미지가 로딩되면 
+								backImg.onload = function() {
+									context.drawImage(backImg, 0, 0, canvas2.width, canvas2.height);
+								}
+								
+								document.getElementById("selroro").onchange = function() {
+									let selroro = document.getElementById("selroro").value;
+									if(selroro == 'oh'){followImg.src = "assets/images/flyingroro.png";}
+									if(selroro == 'kim'){followImg.src = "assets/images/기로로-removebg-preview.png";}
+									if(selroro == 'hyun'){followImg.src = "assets/images/푸루루-removebg-preview.png";}
+									if(selroro == 'nam'){followImg.src = "assets/images/타마마-removebg-preview.png";}
+									if(selroro == 'seo'){followImg.src = "assets/images/도로로-removebg-preview.png";}
+								}
+
+								//배경이미지
+								document.getElementById("selbg").onchange = function() {
+									let selbg = document.getElementById("selbg").value;
+									if(selbg == 'class'){backImg.src= "assets/images/class.jpg";}
+									if(selbg == 'sky'){backImg.src = "assets/images/sky.jpg";}
+									if(selbg == 'fire'){backImg.src = "assets/images/fire.jpg";}
+								}
+
+								canvas2.addEventListener("mousemove", function(e) {
+									context.clearRect(0, 0, canvas2.width, canvas2.height);
+									context.drawImage(backImg, 0, 0, canvas2.width, canvas2.height);
+									context.drawImage(followImg, e.offsetX - 50, e.offsetY - 50, 100, 130);
+								});
+								
+							}
+							 */
+							
+							
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+
+
+</body>
+</html>
