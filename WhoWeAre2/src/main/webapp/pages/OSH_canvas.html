@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        .canvas {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        .menuBar {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 1000px;
+        margin-bottom: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .option label {
+            margin-right: 5px;
+        }
+
+        .drawingField {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        #myCanvas {
+            border: 1px solid black;
+            background-color: #fff;
+            cursor: crosshair;
+        }
+    </style>
+
+</head>
+
+<body>
+<h3>그림판 그리기</h3>
+<div class="canvas">
+    <div class="menuBar">
+        <div class="option">
+            <label for="selColor">색상:</label>
+            <input type="color" id="selColor" value="black">
+        </div>
+        <div class="option">
+            <label for="selLineWidth">굵기:</label>
+            <input type="number" id="selLineWidth" value="5">
+        </div>
+        <div class="option select">
+            <div class="free">
+                <img src="free.png" alt="loading fail" id="free">
+            </div>
+            <div class="line">
+                <img src="line.png" alt="loading fail" id="line">
+            </div>
+            <div class="circle">
+                <img src="circle.png" alt="loading fail" id="circle">
+            </div>
+            <div class="rectangle">
+                <img src="rectangle.png" alt="loading fail" id="rectangle">
+            </div>
+        </div>
+    </div>
+    <div class="drawingField">
+        <canvas id="myCanvas" width="1000" height="600"></canvas>
+    </div>
+    <div>
+        <a id="clear">
+            <button type="button">Clear</button>
+        </a>
+        <a id="download">
+            <button type="button">Image Download</button>
+        </a>
+    </div>
+</div>
+
+<script src="OSH_canvas.js"></script>
+</body>
+</html>

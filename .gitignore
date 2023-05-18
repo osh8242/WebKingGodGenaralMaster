@@ -23,8 +23,18 @@
 hs_err_pid*
 replay_pid*
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 /Servers/
 =======
 /.metadata/
 >>>>>>> f3f757318658512568bbbd0098e9d15b334a85d2
+=======
+
+/.metadata/
+
+# 인텔리제이
+.idea/*.iml
+.idea/*.xml
+.idea/inspectionProfiles/*.xml
+>>>>>>> 6facdd64fd67e67fb42e121ea875c0fe1d71b390
