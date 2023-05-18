@@ -14,10 +14,10 @@ let image = document.getElementById("myCanvas")
 
 
 function setDrawingMode(mode) {drawingMode = mode;}
-document.getElementById('line').addEventListener("click", function (e){setDrawingMode("line");});
-document.getElementById('circle').addEventListener("click", function (e){setDrawingMode("circle");});
-document.getElementById('rectangle').addEventListener("click", function (e){setDrawingMode("rectangle");});
-document.getElementById('free').addEventListener("click", function (e){setDrawingMode("free");});
+document.getElementById('line').addEventListener("click", function (){setDrawingMode("line");});
+document.getElementById('circle').addEventListener("click", function (){setDrawingMode("circle");});
+document.getElementById('rectangle').addEventListener("click", function (){setDrawingMode("rectangle");});
+document.getElementById('free').addEventListener("click", function (){setDrawingMode("free");});
 
 clearBtn.addEventListener("click", clearCanvas);
 downloadBtn.addEventListener("click", download);
@@ -45,15 +45,19 @@ canvas.addEventListener("mouseout", stopDrawing);
 
 
 function startDrawing(event) {
-  startX = event.clientX - canvas.offsetLeft;
-  startY = event.clientY - canvas.offsetTop;
+  const canvasRect = canvas.getBoundingClientRect(); // 캔버스 요소의 크기와 위치 정보를 가져옴
+  startX = event.clientX - canvasRect.left;
+  startY = event.pageY - (canvasRect.top + window.pageYOffset);
 }
 
 function moving(event) {
+  console.log("moving");
+  console.log(startX);
+  console.log(startY);
   if (startX === undefined || startY === undefined) return;
-
-  let currentX = event.clientX - canvas.offsetLeft;
-  let currentY = event.clientY - canvas.offsetTop;
+  const canvasRect = canvas.getBoundingClientRect();
+  let currentX = event.clientX - canvasRect.left;
+  let currentY = event.pageY - (canvasRect.top + window.pageYOffset);
 
   if (drawingMode === "free"){
     context.beginPath();
@@ -71,12 +75,13 @@ function moving(event) {
   context.clearRect(0, 0, canvas.width, canvas.height);
   context.drawImage(subCanvas,0,0);
 
+  context.strokeStyle = document.getElementById("selColor").value;
+  context.lineWidth = document.getElementById("selLineWidth").value;
+
 
   if (drawingMode === "line") {
     // 선 그리기
     context.beginPath();
-    context.strokeStyle = document.getElementById("selColor").value;
-    context.lineWidth = document.getElementById("selLineWidth").value;
     context.moveTo(startX, startY);
     context.lineTo(currentX, currentY);
     context.stroke();
@@ -86,14 +91,10 @@ function moving(event) {
         Math.pow(currentX - startX, 2) + Math.pow(currentY - startY, 2)
     );
     context.beginPath();
-    context.strokeStyle = document.getElementById("selColor").value;
-    context.lineWidth = document.getElementById("selLineWidth").value;
     context.arc(startX, startY, radius, 0, 2 * Math.PI);
     context.stroke();
   } else if (drawingMode === "rectangle") {
     // 사각형 그리기
-    context.strokeStyle = document.getElementById("selColor").value;
-    context.lineWidth = document.getElementById("selLineWidth").value;
     let width = currentX - startX;
     let height = currentY - startY;
     context.strokeRect(startX, startY, width, height);
@@ -104,4 +105,7 @@ function stopDrawing() {
   startX = undefined;
   startY = undefined;
   subContext.drawImage(canvas,0,0);
+  console.log("stopDrawing");
 }
+
+

@@ -49,7 +49,7 @@
 
 </head>
 
-<body data-spy="scroll" data-target=".navbar-collapse" data-offset="100">
+<body data-target=".navbar-collapse" data-offset="100">
 
 <div class="culmn">
   <nav class="navbar navbar-default bootsnav navbar-fixed no-background white">
@@ -79,7 +79,7 @@
       <!-- navbar menu -->
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#home">Home</a></li>
+          <li><a href="../index.html">Home</a></li>
           <li><a href="OSH_canvas.html">Canvas</a></li>
           <li><a href="OSH_kakaoMap.html">KakaoMap</a></li>
         </ul>
@@ -107,7 +107,7 @@
           </div>
         </div>
 
-        <a class="mouse-scroll" href="#about">
+        <a href="#about">
           <span class="mouse"><span class="mouse-movement"></span> </span>
           <span class="mouse-message fadeIn">Explore</span>
           <br>
@@ -213,7 +213,7 @@
                 <div class="service_slid_text">
                   <!-- <span class="icon icon icon-sports-2 text-black"></span>  -->
                   <div style="display: block;margin-left: auto;margin-right: auto; text-align: center ">
-                    <img src="assets/images/kakaomapicon.png" alt=""  style="display: inline"/>
+                    <img src="../assets/images/kakaomapicon.png" alt=""  style="display: inline"/>
                   </div>
                   <h5 class="text-black m-top-20">Kakaomap</h5>
                 </div>
@@ -281,23 +281,23 @@
                   <div class="menuBar">
                     <div class="option">
                       <label for="selColor">색상:</label>
-                      <input type="color" id="selColor" value="black">
+                      <input type="color" id="selColor">
                     </div>
                     <div class="option">
                       <label for="selLineWidth">굵기:</label>
                       <input type="number" id="selLineWidth" value="5">
                     </div>
                     <div class="option select">
-                      <div class="free">
+                      <div class="free list-inline">
                         <img src="free.png" alt="loading fail" id="free">
                       </div>
-                      <div class="line">
+                      <div class="line list-inline">
                         <img src="line.png" alt="loading fail" id="line">
                       </div>
-                      <div class="circle">
+                      <div class="circle list-inline">
                         <img src="circle.png" alt="loading fail" id="circle">
                       </div>
-                      <div class="rectangle">
+                      <div class="rectangle list-inline">
                         <img src="rectangle.png" alt="loading fail" id="rectangle">
                       </div>
                     </div>
@@ -328,7 +328,7 @@
       </div>
     </div>
   </section>
-  <script src="OSH_canvas.js"></script>
+
 
   <section class="about bg-yellow roomy-50">
     <div class="container">
@@ -340,76 +340,6 @@
     </div>
   </section>
 
-
-
-  <section id="kakaomap" class="portfolio margin-top-120">
-    <div class="container">
-      <div class="row">
-        <div class="main-portfolio roomy-80">
-          <div class="col-md-4">
-            <div class="head_title text-left sm-text-center wow fadeInDown">
-              <h2>KaKaoMap</h2>
-            </div>
-          </div>
-
-          <div class="col-md-8">
-            <div class="filter-map-buttons text-right sm-text-center">
-              <button class="btn button" data-filter="allmap">All</button>
-              <button class="btn button" data-filter="standard">Standard</button>
-              <button class="btn button" data-filter="marker">Marker</button>
-            </div>
-          </div>
-          <div class="filter-map-items">
-            <div class="text-center filter-map-item allmap standard all">
-              <div id="map" style="width: 100%; height: 500px;"></div>
-            </div>
-
-            <div class="text-center filter-map-item allmap marker all">
-              <div id="map2" style="width:100%;height:500px;"></div>
-            </div>
-          </div>
-        </div>
-        <script type="text/javascript"src="//dapi.kakao.com/v2/maps/sdk.js?appkey=98dee246db37980b9027c95c2955ddc0"></script>
-        <script>
-
-          /* standard 지도 */
-          var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-                  mapOption = {
-                    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                    level: 3 // 지도의 확대 레벨
-                  };
-
-          // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-          var map = new kakao.maps.Map(mapContainer, mapOption);
-
-
-
-          /* 마커 지도 */
-          var mapContainer2 = document.getElementById('map2'), // 지도를 표시할 div
-                  mapOption2 = {
-                    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                    level: 3 // 지도의 확대 레벨
-                  };
-
-          var map2 = new kakao.maps.Map(mapContainer2, mapOption2); // 지도를 생성합니다
-
-          // 마커가 표시될 위치입니다
-          var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667);
-
-          // 마커를 생성합니다
-          var marker = new kakao.maps.Marker({
-            position: markerPosition
-          });
-
-          // 마커가 지도 위에 표시되도록 설정합니다
-          marker.setMap(map2);
-
-          // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-          // marker.setMap(null);
-        </script>
-      </div>
-    </div>
-  </section>
 
 
 
@@ -430,6 +360,7 @@
 </div>
 
 <!-- JS includes -->
+<script src="OSH_canvas.js"></script>
 <script src="../assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="../assets/js/vendor/bootstrap.min.js"></script>
 
