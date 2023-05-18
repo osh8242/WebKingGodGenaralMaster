@@ -1,12 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ko" class="h-100">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cover Template · Bootstrap v5.2</title>
+
+    <!-- CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <meta name="theme-color" content="#712cf9">
+
+    <!-- CSS -->
+    <link href="jangdae.css" rel="stylesheet">
 </head>
-<body>
-    <div>장대 페이지</div>
+
+<body class="d-flex h-100 text-center text-bg-dark">
+
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="mb-auto">
+        <div>
+            <h3 class="float-md-start mb-0">Cover</h3>
+            <nav class="nav nav-masthead justify-content-center float-md-end">
+                <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+                <a class="nav-link fw-bold py-1 px-0" href="jangdae_Canvas.html">jangdae_Canvas.html</a>
+                <a class="nav-link fw-bold py-1 px-0" href="jangdae_KakaoMap.html">jangdae_KakaoMap.html</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="px-3">
+        <h1>안녕하세요. 서장대입니다.</h1>
+        <p class="lead">개발의 세계는 정말 끝이 없더라고요. 😇</p>
+        <p class="lead">
+            <button id="GameBtn" type="button" class="btn btn-primary">Mini Game</button>
+        </p>
+    </main>
+
+    <footer class="mt-auto text-white-50">
+        <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a></p>
+    </footer>
+</div>
+
+<script>
+    // 미니 게임
+    GameBtn.addEventListener("click", () => {
+        console.log("gameStart");
+        const answer = "서장대";
+        const guess = prompt("홈페이지 주인의 이름은? :");
+        if (guess === answer) {
+            alert("정말 멋진 일을 해내셨네요!");
+        } else {
+            alert(`틀렸습니다. 정답은 ${answer} 입니다. 정말 멋진 분이시군요. 가끔은 자신을 되돌아보는 것이 어떨까요? 우리는 일상 생활에 치여서 자신이 어떤 발전을 이루고 있는지, 어떤 실수를 범하고 있는지 등을 제대로 파악하지 못할 때가 많습니다. 자신을 돌아볼 기회를 가지면, 지금까지 어떤 일을 해왔는지 돌아보고, 더 나은 방향으로 나아갈 수 있는 계획을 세울 수 있습니다. 자신의 강점을 더욱 발전시키고, 약점을 보완하며 성장하는 것이 중요합니다. 이를 통해 더욱 성취감을 느끼며, 새로운 도전에 대한 용기를 갖게 될 수 있을 것입니다.`);
+        }
+    });
+</script>
 </body>
+
 </html>

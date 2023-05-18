@@ -25,3 +25,7 @@ replay_pid*
 
 /.metadata/
 
+# 인텔리제이
+.idea/*.iml
+.idea/*.xml
+.idea/inspectionProfiles/*.xml
