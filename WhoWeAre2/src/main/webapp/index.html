@@ -158,38 +158,48 @@
 										<li><a href=""><i class="fa fa-home"></i></a></li>
 									</ul>
 								</div>
-								<br>
-								<div class="row">
-									<div class="col-sm-4">
-										<img src="assets/images/소현.png" alt="" class="img-circle" />
-										<h4 class="m-top-20">HYUN SOHYUN</h4>
-										<div class="separator"></div>
-										<ul class="list-inline">
-											<li><a href="https://github.com/hyunsohyun"><i class="fa fa-github"></i></a></li>
-											<li><a href=""><i class="fa fa-home"></i></a></li>
-										</ul>
-									</div>
-									<!-- End off col-md-4 -->
-									<div class="col-sm-4">
-										<img src="assets/images/동우.png" alt="" class="img-circle" />
-										<h4 class="m-top-20">DONGWOO NAM</h4>
-										<div class="separator"></div>
-										<ul class="list-inline">
-											<li><a href="https://github.com/NamDW96"><i class="fa fa-github"></i></a></li>
-											<li><a href=""><i class="fa fa-home"></i></a></li>
-										</ul>
-									</div>
-									<!-- End off col-md-4 -->
-									<div class="col-sm-4">
-										<img src="assets/images/장대.png" alt="" class="img-circle" />
-										<h4 class="m-top-20">JANGDAE SEO</h4>
-										<div class="separator"></div>
-										<ul class="list-inline">
-											<li><a href="https://github.com/devjangdae"><i class="fa fa-github"></i></a></li>
-											<li><a href="./pages/jangdae.html"><i class="fa fa-home"></i></a></li>
-										</ul>
-									</div>
-									<!-- End off col-md-4 -->
+								<!-- End off col-md-4 -->
+								<div class="col-sm-4">
+									<img src="assets/images/의진.png" alt="" class="img-circle" />
+									<h4 class="m-top-20">KIM EUIJIN</h4>
+									<div class="separator"></div>
+									<ul class="list-inline">
+										<li><a href="https://github.com/euizin"><i class="fa fa-github"></i></a></li>
+										<li><a href=""><i class="fa fa-home"></i></a></li>
+									</ul>
+								</div>
+								<!-- End off col-md-4 -->
+							</div>
+							<br>
+							<div class="row">
+								<div class="col-sm-4">
+									<img src="assets/images/소현.jpg" alt="" class="img-circle" />
+									<h4 class="m-top-20">HYUN SOHYUN</h4>
+									<div class="separator"></div>
+									<ul class="list-inline">
+										<li><a href="https://github.com/hyunsohyun"><i class="fa fa-github"></i></a></li>
+										<li><a href="sohyun.html"><i class="fa fa-home"></i></a></li>
+									</ul>
+								</div>
+								<!-- End off col-md-4 -->
+								<div class="col-sm-4">
+									<img src="assets/images/동우.png" alt="" class="img-circle" />
+									<h4 class="m-top-20">DONGWOO NAM</h4>
+									<div class="separator"></div>
+									<ul class="list-inline">
+										<li><a href="https://github.com/NamDW96"><i class="fa fa-github"></i></a></li>
+										<li><a href=""><i class="fa fa-home"></i></a></li>
+									</ul>
+								</div>
+								<!-- End off col-md-4 -->
+								<div class="col-sm-4">
+									<img src="assets/images/장대.png" alt="" class="img-circle" />
+									<h4 class="m-top-20">JANGDAE SEO</h4>
+									<div class="separator"></div>
+									<ul class="list-inline">
+										<li><a href="https://github.com/devjangdae"><i class="fa fa-github"></i></a></li>
+										<li><a href=""><i class="fa fa-home"></i></a></li>
+									</ul>
 								</div>
 							</div>
 						</div>
@@ -307,6 +317,8 @@
 									<canvas id="mycanvas" width="1000px" height="500px" style="border: 1px solid #000000;"></canvas>
 									<br>
 									<a class="btn btn-default" id="clear">Clear</a>
+									<a class="btn btn-default" id="download">Download</a>
+
 								</div>
 							</div>
 
@@ -421,14 +433,14 @@
 							let context = canvas2.getContext("2d");
 
 							window.onload = function() {
-								//커서이미지
+								//커서이미지					         
 								let followImg = new Image();
 								followImg.src = "assets/images/flyingroro.png";
 
 								let backImg = new Image();
 								backImg.src = "assets/images/class.jpg";
 
-								//이미지가 로딩되면
+								//이미지가 로딩되면 
 								backImg.onload = function() {
 									context.drawImage(backImg, 0, 0, canvas2.width, canvas2.height);
 								}
@@ -457,6 +469,8 @@
 								});
 
 							}
+
+
 
 						</script>
 					</div>
@@ -496,11 +510,11 @@
 						</div>
 					</div>
 					<div class="filter-map-items">
-						<div class="text-center filter-map-item allmap standard all" style="border:1px solid black">
+						<div class="text-center filter-map-item allmap standard">
 							<div id="map" style="width: 100%; height: 500px;"></div>
 						</div>
 
-						<div class="text-center filter-map-item allmap marker all" style="border:1px solid black">
+						<div class="text-center filter-map-item allmap marker">
 							<div id="map2" style="width:100%;height:500px;"></div>
 						</div>
 					</div>
