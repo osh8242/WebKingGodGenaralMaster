@@ -24,6 +24,7 @@ downloadBtn.addEventListener("click", download);
 
 function clearCanvas(){
   context.clearRect(0,0,canvas.width,canvas.height);
+  subContext.clearRect(0,0,subCanvas.width,subCanvas.height);
 }
 
 // 다운로드 기능
