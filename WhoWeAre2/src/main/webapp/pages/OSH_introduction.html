@@ -275,184 +275,60 @@
             <div style="clear: both;"></div>
 
             <div class="filter-canvas-items">
-              <div class="filter-canvas-item all drawing"><!-- 그림판 -->
-                그림판 그리기
-                <div>
-                  색상 : <select id="selcolor">
-                  <option value="black">검정</option>
-                  <option value="red">빨강</option>
-                  <option value="green">초록</option>
-                  <option value="blue">파랑</option>
-                  <option value="magenta">분홍</option>
-                </select> 굵기 : <select id="selwidth">
-                  <option value="1">얇게</option>
-                  <option value="3">중간</option>
-                  <option value="5">굵게</option>
-                </select><br>
+              <div class="filter-canvas-item all drawing">
+                <!-- 그림판 -->
+                <div class="canvas">
+                  <div class="menuBar">
+                    <div class="option">
+                      <label for="selColor">색상:</label>
+                      <input type="color" id="selColor" value="black">
+                    </div>
+                    <div class="option">
+                      <label for="selLineWidth">굵기:</label>
+                      <input type="number" id="selLineWidth" value="5">
+                    </div>
+                    <div class="option select">
+                      <div class="free">
+                        <img src="free.png" alt="loading fail" id="free">
+                      </div>
+                      <div class="line">
+                        <img src="line.png" alt="loading fail" id="line">
+                      </div>
+                      <div class="circle">
+                        <img src="circle.png" alt="loading fail" id="circle">
+                      </div>
+                      <div class="rectangle">
+                        <img src="rectangle.png" alt="loading fail" id="rectangle">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="drawingField">
+                    <canvas id="myCanvas" width="1000" height="600" style="border: 2px solid black"></canvas>
+                  </div>
+                  <div>
+                    <a id="clear">
+                      <button class="btn btn-default" type="button">Clear</button>
+                    </a>
+                    <a id="download">
+                      <button class="btn btn-default" type="button">Image Download</button>
+                    </a>
+                  </div>
                 </div>
-
-                <div>
-                  <canvas id="mycanvas" width="1000px" height="500px" style="border: 1px solid #000000;"></canvas>
-                  <br>
-                  <a class="btn btn-default" id="clear">Clear</a>
-                </div>
+                <!--그림판end-->
               </div>
 
               <div class="filter-canvas-item all myroro"><!-- 날아라 케로로 -->
-                날아라 케로로
-                <div>
-                  캐릭터 :
-                  <select id="selroro">
-                    <option value="oh" selected>오승환</option>
-                    <option value="kim">김의진</option>
-                    <option value="hyun">현소현</option>
-                    <option value="nam">남동우</option>
-                    <option value="seo">서장대</option>
-                  </select>
-                  배경 :
-                  <select id="selbg">
-                    <option value="class" selected>교실</option>
-                    <option value="sky">하늘</option>
-                    <option value="fire">불구덩이</option>
-                  </select><br>
-                </div>
-                <br>
-                <canvas id="flyingcanvas" width="1000px" height="500px"></canvas>
+
               </div>
             </div>
 
-            <script>
-              /* 첫번재 그림판 */
-              var canvas;
-              var ctx;
-              var sx, sy; // 현재 위치
-              var drawing = false; // 현재 그리는 중인가?
 
-              //window.onload = function() {
-              canvas = document.getElementById("mycanvas");
-              ctx = canvas.getContext("2d");
-
-              if (canvas == null || canvas.getContext == null) alert("a");
-              ctx.lineCap = "round";
-
-              // 현재 위치를 저장한다.
-              canvas.onmousedown = function(e) {
-                e.preventDefault();
-                sx = canvasX(e.clientX);
-                sy = canvasY(e.clientY);
-                drawing = true;
-              }
-
-              // 현재 위치에서 새로 이동한 곳까지 선을 그린다.
-              canvas.onmousemove = function(e) {
-                if (drawing) {
-                  e.preventDefault();
-                  ctx.beginPath();
-                  ctx.moveTo(sx, sy);
-                  sx = canvasX(e.clientX);
-                  sy = canvasY(e.clientY);
-                  ctx.lineTo(sx, sy);
-                  ctx.stroke();
-                }
-              }
-
-              // 그리기를 종료한다.
-              canvas.onmouseup = function(e) {
-                drawing = false;
-              }
-              //}
-
-              // 선 색상 변경
-              var selcolor = document.getElementById("selcolor");
-              selcolor.onchange = function(e) {
-                ctx.strokeStyle = selcolor.value;
-              }
-
-              // 선 굵기 변경
-              var selwidth = document.getElementById("selwidth");
-              selwidth.onchange = function(e) {
-                ctx.lineWidth = selwidth.value;
-              }
-
-              // 모두 지우기
-              var btnclear = document.getElementById("clear");
-              btnclear.onclick = function(e) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-              }
-
-
-              function canvasX(clientX) {
-                var bound = canvas.getBoundingClientRect();
-                var bw = 5;
-                return (clientX - bound.left - bw)
-                        * (canvas.width / (bound.width - bw * 2));
-              }
-
-              function canvasY(clientY) {
-                var bound = canvas.getBoundingClientRect();
-                var bw = 5;
-                return (clientY - bound.top - bw)
-                        * (canvas.height / (bound.height - bw * 2));
-              }
-
-              function download() {
-                let dl = document.getElementById("download");
-                let image = document.getElementById("myCanvas")
-                        .toDataURL("image/png")
-                        .replace("image/png", "image/octet-stream");
-                dl.setAttribute("href", image);
-                dl.setAttribute("download","image-name.png");
-              }
-
-              /* 두번째 날아라 케로로 */
-              let canvas2 = document.querySelector("#flyingcanvas");
-              let context = canvas2.getContext("2d");
-
-              window.onload = function() {
-                //커서이미지
-                let followImg = new Image();
-                followImg.src = "assets/images/flyingroro.png";
-
-                let backImg = new Image();
-                backImg.src = "assets/images/class.jpg";
-
-                //이미지가 로딩되면
-                backImg.onload = function() {
-                  context.drawImage(backImg, 0, 0, canvas2.width, canvas2.height);
-                }
-
-                document.getElementById("selroro").onchange = function() {
-                  let selroro = document.getElementById("selroro").value;
-                  if(selroro == 'oh'){followImg.src = "assets/images/flyingroro.png";}
-                  if(selroro == 'kim'){followImg.src = "assets/images/기로로-removebg-preview.png";}
-                  if(selroro == 'hyun'){followImg.src = "assets/images/푸루루-removebg-preview.png";}
-                  if(selroro == 'nam'){followImg.src = "assets/images/타마마-removebg-preview.png";}
-                  if(selroro == 'seo'){followImg.src = "assets/images/도로로-removebg-preview.png";}
-                }
-
-                //배경이미지
-                document.getElementById("selbg").onchange = function() {
-                  let selbg = document.getElementById("selbg").value;
-                  if(selbg == 'class'){backImg.src= "assets/images/class.jpg";}
-                  if(selbg == 'sky'){backImg.src = "assets/images/sky.jpg";}
-                  if(selbg == 'fire'){backImg.src = "assets/images/fire.jpg";}
-                }
-
-                canvas2.addEventListener("mousemove", function(e) {
-                  context.clearRect(0, 0, canvas2.width, canvas2.height);
-                  context.drawImage(backImg, 0, 0, canvas2.width, canvas2.height);
-                  context.drawImage(followImg, e.offsetX - 50, e.offsetY - 50, 100, 130);
-                });
-
-              }
-
-            </script>
           </div>
         </div>
       </div>
     </div>
   </section>
-
+  <script src="OSH_canvas.js"></script>
 
   <section class="about bg-yellow roomy-50">
     <div class="container">
