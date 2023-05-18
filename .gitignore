@@ -23,6 +23,7 @@
 hs_err_pid*
 replay_pid*
 
+/Servers/
 /.metadata/
 
 # 인텔리제이
