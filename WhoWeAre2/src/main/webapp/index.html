@@ -314,6 +314,10 @@
 										<option value="sky">하늘</option>
 										<option value="fire">불구덩이</option>
 									</select><br>
+									
+									<input type="file" class="real-upload" accept="image/*" required multiple>
+									<div class="upload"></div>
+									<ul class="image-preview"></ul>
 								</div>
 								<br>
 								<div>
@@ -358,13 +362,6 @@
 									if(selroro == 'seo'){followImg.src = "assets/images/도로로-removebg-preview.png";}
 								}
 
-								//케로로 캔버스 배경이미지
-								document.getElementById("selbg").onchange = function() {
-									let selbg = document.getElementById("selbg").value;
-									if(selbg == 'class'){backImg.src= "assets/images/class.jpg";}
-									if(selbg == 'sky'){backImg.src = "assets/images/sky.jpg";}
-									if(selbg == 'fire'){backImg.src = "assets/images/fire.jpg";}
-								}
 								
 								//케로로 캔버스 클릭 이벤트 (subcanvas복붙 저장)
 								canvasRoro.addEventListener("click", function(e) {
@@ -392,8 +389,55 @@
 	 								contextRoro.drawImage(backImg, 0, 0, canvasRoro.width, canvasRoro.height);
 									subcontextRoro.drawImage(backImg, 0, 0, canvasRoro.width, canvasRoro.height);
 								});
-							}
+									 					
+	 							
+	 							//케로로 캔버스 배경이미지
+								document.getElementById("selbg").onchange = function() {
+									let selbg = document.getElementById("selbg").value;
+									backImg.src= "assets/images/class.jpg";
+								}
 							
+															
+							function getImageFiles(e) {
+								const uploadFiles = [];
+								const files = e.currentTarget.files;
+								const imagePreview = document.querySelector('.image-preview');
+
+								if ([...files].length > 1) {
+									alert('이미지는 1개만 등록가능합니다.');
+									return;
+								}
+
+								// 파일 타입 검사
+								[...files].forEach(file => {
+									if (!file.type.match("image/.*")) {
+										alert('이미지 파일만 업로드가 가능합니다.');
+										return
+									}
+
+									// 파일 갯수 검사
+									if ([...files].length == 1) {
+										uploadFiles.push(file);
+										const reader = new FileReader();
+										reader.onload = (e) => {
+											const preview = changeBgImg(e, file);
+										};
+										reader.readAsDataURL(file);
+									}
+								});
+							}
+
+							function changeBgImg(e, file) {
+								backImg.src= e.target.result;
+							}
+
+							const realUpload = document.querySelector('.real-upload');
+							const upload = document.querySelector('.upload');
+
+							upload.addEventListener('click', () => realUpload.click());
+							realUpload.addEventListener('change', getImageFiles);
+							
+							}
 						</script>
 					</div>
 				</div>
