@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<h1>남동우</h1>
-	<div id="map" style="width: 500px; height: 400px;"></div>
-	<hr>
-
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fa7aee7f75b3f9e59f8dd43d4b9587ba&libraries=drawing"></script>
-	<script>
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
 			center : new kakao.maps.LatLng(37.5838175, 126.9999694), // 지도의 중심좌표
@@ -98,6 +84,3 @@
 		// 지도 위에 Toolbox를 표시합니다
 		// kakao.maps.ControlPosition은 컨트롤이 표시될 위치를 정의하는데 TOP은 위 가운데를 의미합니다.
 		map.addControl(toolbox.getElement(), kakao.maps.ControlPosition.TOP);
-	</script>
-</body>
-</html>
