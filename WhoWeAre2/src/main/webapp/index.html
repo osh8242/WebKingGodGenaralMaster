@@ -297,31 +297,6 @@
 						<div style="clear: both;"></div>
 
 						<div class="filter-canvas-items">
-							<div class="filter-canvas-item all drawing"><!-- 그림판 -->
-								그림판 그리기
-								<div>
-									색상 : <select id="selcolor">
-										<option value="black">검정</option>
-										<option value="red">빨강</option>
-										<option value="green">초록</option>
-										<option value="blue">파랑</option>
-										<option value="magenta">분홍</option>
-									</select> 굵기 : <select id="selwidth">
-										<option value="1">얇게</option>
-										<option value="3">중간</option>
-										<option value="5">굵게</option>
-									</select><br>
-								</div>
-	
-								<div>
-									<canvas id="mycanvas" width="1000px" height="500px" style="border: 1px solid #000000;"></canvas>
-									<br> 
-									<a class="btn btn-default" id="clear">Clear</a>
-									<a class="btn btn-default" id="download">Download</a>
-									
-								</div>
-							</div>
-							
 							<div class="filter-canvas-item all myroro"><!-- 날아라 케로로 -->
 								날아라 케로로
 								<div>
@@ -341,104 +316,27 @@
 									</select><br>
 								</div>
 								<br>
-								<canvas id="flyingcanvas" width="1000px" height="500px"></canvas>
+								<div>
+									<canvas id="flyingcanvas" width="1000px" height="500px"></canvas>
+									<br> 
+									<a class="btn btn-default" id="clearRoro">Clear</a>
+									<a class="btn btn-default" id="downloadRoro">Download</a>
+								</div>
 							</div>
 						</div>
 						
 						<script>
-							/* 첫번재 그림판 */
-						 	var canvas;
-							var ctx;
-							var sx, sy; // 현재 위치
-							var drawing = false; // 현재 그리는 중인가?
-
-							//window.onload = function() {
-								canvas = document.getElementById("mycanvas");
-								ctx = canvas.getContext("2d");
-								
- 								if (canvas == null || canvas.getContext == null)
-								ctx.lineCap = "round";
-
-								// 현재 위치를 저장한다.
-								canvas.onmousedown = function(e) {
-									e.preventDefault();
-									sx = canvasX(e.clientX);
-									sy = canvasY(e.clientY);
-									drawing = true;
-								}
-
- 								// 현재 위치에서 새로 이동한 곳까지 선을 그린다.
-								canvas.onmousemove = function(e) {
-									if (drawing) {
-										e.preventDefault();
-										ctx.beginPath();
-										ctx.moveTo(sx, sy);
-										sx = canvasX(e.clientX);
-										sy = canvasY(e.clientY);
-										ctx.lineTo(sx, sy);
-										ctx.stroke();
-									}
-								}
-
-								// 그리기를 종료한다.
-								canvas.onmouseup = function(e) {
-									drawing = false;
-								}
-							//}
-
-							// 선 색상 변경
-							var selcolor = document.getElementById("selcolor");
-							selcolor.onchange = function(e) {
-								ctx.strokeStyle = selcolor.value;
-							}
-
-							// 선 굵기 변경
-							var selwidth = document.getElementById("selwidth");
-							selwidth.onchange = function(e) {
-								ctx.lineWidth = selwidth.value;
-							} 
-
-							// 모두 지우기
- 							var btnclear = document.getElementById("clear");
-							btnclear.onclick = function(e) {
-								ctx.clearRect(0, 0, canvas.width, canvas.height);
-							}
-							
-							
-							function canvasX(clientX) {
-								var bound = canvas.getBoundingClientRect();
-								var bw = 5;
-								return (clientX - bound.left - bw)
-										* (canvas.width / (bound.width - bw * 2));
-							}
-
-							function canvasY(clientY) {
-								var bound = canvas.getBoundingClientRect();
-								var bw = 5;
-								return (clientY - bound.top - bw)
-										* (canvas.height / (bound.height - bw * 2));
-							}  
-							
-							function download() {
-						        let dl = document.getElementById("download");
-						        let image = document.getElementById("myCanvas")
-						            .toDataURL("image/png")
-						            .replace("image/png", "image/octet-stream");
-						        dl.setAttribute("href", image);
-						        dl.setAttribute("download","image-name.png");
-						    }
-							
 							/* 두번째 날아라 케로로 */
-							let canvas2 = document.querySelector("#flyingcanvas");
-							let context = canvas2.getContext("2d");
+							let canvasRoro = document.querySelector("#flyingcanvas");
+							let contextRoro = canvasRoro.getContext("2d");
 							
-							let subCanvas2 = document.createElement('canvas');
-							subCanvas2.width = canvas2.width;
-							subCanvas2.height = canvas2.height;
-							let subContext = subCanvas2.getContext("2d");	
+							let subCanvasRoro = document.createElement('canvas');
+							subCanvasRoro.width = canvasRoro.width;
+							subCanvasRoro.height = canvasRoro.height;
+							let subcontextRoro = subCanvasRoro.getContext("2d");	
 							
 							window.onload = function() {
-								//커서이미지					         
+								//케로로 이미지
 								let followImg = new Image();
 								followImg.src = "assets/images/flyingroro.png";
 								
@@ -447,8 +345,8 @@
 								
 								//이미지가 로딩되면 
 								backImg.onload = function() {
-									context.drawImage(backImg, 0, 0, canvas2.width, canvas2.height);
-									subContext.drawImage(backImg, 0, 0, canvas2.width, canvas2.height);
+									contextRoro.drawImage(backImg, 0, 0, canvasRoro.width, canvasRoro.height);
+									subcontextRoro.drawImage(backImg, 0, 0, canvasRoro.width, canvasRoro.height);
 								}
 								
 								document.getElementById("selroro").onchange = function() {
@@ -460,7 +358,7 @@
 									if(selroro == 'seo'){followImg.src = "assets/images/도로로-removebg-preview.png";}
 								}
 
-								//배경이미지
+								//케로로 캔버스 배경이미지
 								document.getElementById("selbg").onchange = function() {
 									let selbg = document.getElementById("selbg").value;
 									if(selbg == 'class'){backImg.src= "assets/images/class.jpg";}
@@ -468,17 +366,32 @@
 									if(selbg == 'fire'){backImg.src = "assets/images/fire.jpg";}
 								}
 								
-								//클릭하면 subcanvas복붙 저장
-								canvas2.addEventListener("click", function(e) {
-									subContext.drawImage(canvas2,0,0);
+								//케로로 캔버스 클릭 이벤트 (subcanvas복붙 저장)
+								canvasRoro.addEventListener("click", function(e) {
+									subcontextRoro.drawImage(canvasRoro,0,0);
 								});
-
-								canvas2.addEventListener("mousemove", function(e) {
-									context.clearRect(0, 0, canvas2.width, canvas2.height);
-									context.drawImage(subCanvas2, 0, 0, canvas2.width, canvas2.height);
-									context.drawImage(followImg, e.offsetX - 50, e.offsetY - 50, 100, 130);
+								
+								//케로로 캔버스 마우스따라 로로 따라다니기
+								canvasRoro.addEventListener("mousemove", function(e) {
+									contextRoro.clearRect(0, 0, canvasRoro.width, canvasRoro.height);
+									contextRoro.drawImage(subCanvasRoro, 0, 0, canvasRoro.width, canvasRoro.height);//subcanvas로 갈아끼기
+									contextRoro.drawImage(followImg, e.offsetX - 50, e.offsetY - 50, 100, 130);
 								});
-	
+								
+								//케로로 캔버스 다운로드
+								let btndownloadRoro = document.getElementById("downloadRoro");
+								btndownloadRoro.addEventListener("click", function(e) {
+									let image = document.getElementById("flyingcanvas").toDataURL("image/png").replace("image/png", "image/octet-stream");
+							        this.setAttribute("href", image);
+							        this.setAttribute("download","roroimage.png");
+								});
+								
+								//케로로 캔버스 비우기
+	 							let btnclearRoro = document.getElementById("clearRoro");
+	 							btnclearRoro.addEventListener("click", function(e) {
+	 								contextRoro.drawImage(backImg, 0, 0, canvasRoro.width, canvasRoro.height);
+									subcontextRoro.drawImage(backImg, 0, 0, canvasRoro.width, canvasRoro.height);
+								});
 							}
 							
 						</script>
