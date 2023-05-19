@@ -146,6 +146,7 @@
 								<p></p>
 							</div>
 						</div>
+            
 						<div class="mb-3">
 							<div class="teams_item text-center sm-m-top-50">
 								<div class="row" style="text-align: center;display: flex;justify-content: center;">
@@ -340,13 +341,14 @@
 							let subcontextRoro = subCanvasRoro.getContext("2d");	
 							
 							window.onload = function() {
+
 								//케로로 이미지
 								let followImg = new Image();
 								followImg.src = "assets/images/flyingroro.png";
 								
 								let backImg = new Image();
-								backImg.src = "assets/images/class.jpg";
-								
+								backImg.src = "assets/images/class.jpg";								
+
 								//이미지가 로딩되면 
 								backImg.onload = function() {
 									contextRoro.drawImage(backImg, 0, 0, canvasRoro.width, canvasRoro.height);
