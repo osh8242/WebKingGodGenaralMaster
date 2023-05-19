@@ -316,8 +316,8 @@
 									</select><br>
 									
 									<input type="file" class="real-upload" accept="image/*" required multiple>
-									<div class="upload"></div>
-									<ul class="image-preview"></ul>
+									<div class="upload"></div> 
+									
 								</div>
 								<br>
 								<div>
@@ -340,10 +340,12 @@
 							let subcontextRoro = subCanvasRoro.getContext("2d");	
 							
 							window.onload = function() {
+
 								//케로로 이미지
 								let followImg = new Image();
 								followImg.src = "assets/images/flyingroro.png";
 								
+								//배경 이미지
 								let backImg = new Image();
 								backImg.src = "assets/images/class.jpg";
 								
@@ -363,7 +365,6 @@
 								}
 
 								
-								
 								//케로로 캔버스 클릭 이벤트 (subcanvas복붙 저장)
 								canvasRoro.addEventListener("click", function(e) {
 									subcontextRoro.drawImage(canvasRoro,0,0);
@@ -374,6 +375,12 @@
 									contextRoro.clearRect(0, 0, canvasRoro.width, canvasRoro.height);
 									contextRoro.drawImage(subCanvasRoro, 0, 0, canvasRoro.width, canvasRoro.height);//subcanvas로 갈아끼기
 									contextRoro.drawImage(followImg, e.offsetX - 50, e.offsetY - 50, 100, 130);
+								});
+								
+								//케로로 캔버스 mouseout 로로 사라지기
+								canvasRoro.addEventListener("mouseout", function(e) {
+									contextRoro.clearRect(0, 0, canvasRoro.width, canvasRoro.height);
+									contextRoro.drawImage(subCanvasRoro, 0, 0, canvasRoro.width, canvasRoro.height);
 								});
 								
 								//케로로 캔버스 다운로드
@@ -390,7 +397,6 @@
 	 								contextRoro.drawImage(backImg, 0, 0, canvasRoro.width, canvasRoro.height);
 									subcontextRoro.drawImage(backImg, 0, 0, canvasRoro.width, canvasRoro.height);
 								});
-									 					
 	 							
 	 							//케로로 캔버스 배경이미지
 								document.getElementById("selbg").onchange = function() {
@@ -407,6 +413,12 @@
 								}
 								
 								//케로로 파일 업로드 해서 배경바꾸기
+								const realUpload = document.querySelector('.real-upload');
+								const upload = document.querySelector('.upload');
+	
+								upload.addEventListener('click', () => realUpload.click());
+								realUpload.addEventListener('change', getImageFiles);
+								
 								let getImageFiles = (e) => {
 									const uploadFiles = [];
 									const files = e.currentTarget.files;
@@ -439,11 +451,7 @@
 									backImg.src= e.target.result;
 								}
 
-								const realUpload = document.querySelector('.real-upload');
-								const upload = document.querySelector('.upload');
-	
-								upload.addEventListener('click', () => realUpload.click());
-								realUpload.addEventListener('change', getImageFiles);
+								
 								
 							}
 						</script>
@@ -558,43 +566,16 @@
 	<script src="assets/js/vendor/bootstrap.min.js"></script>
 
 	<script src="assets/js/jquery.magnific-popup.js"></script>
-	<!--<script src="assets/js/jquery.easypiechart.min.js"></script>-->
 	<script src="assets/js/jquery.easing.1.3.js"></script>
-	<!--<script src="assets/js/slick.js"></script>-->
 	<script src="assets/js/slick.min.js"></script>
 	<script src="assets/js/js.isotope.js"></script>
 	<script src="assets/js/jquery.collapse.js"></script>
 	<script src="assets/js/bootsnav.js"></script>
 
-	<script
-		src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-
+	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
-<script>
-   const filterCanvasButtons = document.querySelectorAll('.filter-canvas-buttons .button');
-   const filterCanvasItems = document.querySelectorAll('.filter-canvas-items .filter-canvas-item');
-   dataFilter(filterCanvasButtons, filterCanvasItems);
-
-   const filterMapButtons = document.querySelectorAll('.filter-map-buttons button');
-   const filterMapItems = document.querySelectorAll('.filter-map-items .filter-map-item');
-   dataFilter(filterMapButtons, filterMapItems);
-
-   function dataFilter(buttons, items){
-      buttons.forEach((button) => {
-         button.addEventListener('click', () => {
-            const filter = button.dataset.filter;
-
-            items.forEach((item) => {
-               if (filter === 'all' || item.classList.contains(filter)) {
-                  item.classList.remove('hide');
-               } else {
-                  item.classList.add('hide');
-               }
-            });
-         });
-      });
-   }
-</script>
+	
+	<script src="filter.js"></script>
 </body>
 </html>
