@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+</head>
+
+<body>
+<h3>jangdae_Canvas.html</h3>
+<h3>그려보세요~</h3>
+<hr>
+<canvas id="canvas"></canvas>
+<div class="controls">
+    <button id="reset" onclick="clearCanvas()">Reset</button>
+    <label for="radius">Radius:</label>
+    <input type="number" id="radius" name="radius" value=1 onchange="updateRadius(this.value)">
+</div>
+<hr>
+
+
+<script>
+    // Set up environment
+    let
+        canvas = document.getElementById('canvas'),
+        ctx = canvas.getContext('2d'),
+        downPoints = [];
+
+    canvas.setAttribute('height', window.innerHeight - 100);
+    canvas.setAttribute('width', window.innerWidth);
+
+
+    // General
+
+    function clearCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function randomRGB(r = 0, g = 0, b = 0) {
+        let
+            red = r ? r : Math.round(Math.random() * 255),
+            green = g ? g : Math.round(Math.random() * 255),
+            blue = b ? b : Math.round(Math.random() * 255);
+        return `rgb(${red},${green},${blue})`;
+    }
+
+    function radians(degrees) {
+        return (Math.PI / 180) * degrees;
+    }
+
+
+    // App
+    const points = [];
+
+    class Point {
+        constructor(x, y, r = 2) {
+            this.radius = r;
+            this.x = x;
+            this.y = y;
+            this.x_ = x;
+            this.y_ = y;
+            this.vx = 0;
+            this.vy = 0;
+            this.distanceTraveled = 0;
+            this.travelSpeed = 1;
+            this.targetDistance;
+            this.raf;
+            this.color = randomRGB();
+            points.push(this);
+        }
+
+        move(x, y) {
+            this.x += x;
+            this.y += y;
+            this.draw();
+        }
+
+        draw() {
+            ctx.beginPath();
+            ctx.fillStyle = this.color;
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+    }
+
+    function travelPoint(a, b) {
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+    }
+
+    function outlinePoints(points) {
+        for (let i = 0; i < points.length; i++) {
+            let next = points.length > i + 1
+                ? i + 1
+                : 0;
+            if (next) travelPoint(points[i], points[next]);
+        }
+    }
+
+    // game controller
+    window.addEventListener('keydown', function (e) {
+        //e.preventDefault();
+        let key = e.key || e.code;
+        switch (key) {
+            case "ArrowDown":
+                e.preventDefault();
+                return point.move(0, 1);
+            case 'ArrowUp':
+                e.preventDefault();
+                return point.move(0, -1);
+            case 'ArrowLeft':
+                e.preventDefault();
+                return point.move(-1, 0);
+            case 'ArrowRight':
+                e.preventDefault();
+                return point.move(1, 0);
+            default:
+                return;
+        }
+    });
+
+    canvas.addEventListener('mousemove', function (e) {
+        if (point.mouseDown) {
+            let p = new Point(e.clientX, e.clientY, point.radius);
+            //p.draw();
+            point.move(e.clientX, e.clientY);
+            downPoints.push(p);
+        }
+    });
+
+    canvas.addEventListener('mousedown', function (e) {
+        point.move(e.clientX, e.clientY);
+        point.mouseDown = 1;
+        downPoints = [];
+
+        ctx.lineCap = 'butt';
+        ctx.lineJoin = 'round';
+        ctx.meterLimit = 50;
+        ctx.strokeStyle = point.color;
+        ctx.lineWidth = point.radius * 2;
+        ctx.beginPath();
+    });
+
+    window.addEventListener('mouseup', function (e) {
+        point.mouseDown = 0;
+        outlinePoints(downPoints);
+        ctx.stroke();
+    })
+
+    let point = new Point(canvas.height / 2, canvas.width / 2, 1);
+
+    function updateRadius(r) {
+        point.radius = r;
+    }
+</script>
+</body>
+
+</html>
