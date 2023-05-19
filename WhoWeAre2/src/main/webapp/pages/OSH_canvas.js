@@ -12,12 +12,57 @@ let image = document.getElementById("myCanvas")
     .toDataURL("image/png")
     .replace("image/png", "image/octet-stream");
 
-
+// div 설정
+let freediv = document.getElementById('freediv');
+let linediv = document.getElementById('linediv');
+let circlediv = document.getElementById('circlediv');
+let rectanglediv = document.getElementById('rectanglediv');
 
 document.getElementById('line').addEventListener("click", function (){setDrawingMode("line");});
 document.getElementById('circle').addEventListener("click", function (){setDrawingMode("circle");});
 document.getElementById('rectangle').addEventListener("click", function (){setDrawingMode("rectangle");});
 document.getElementById('free').addEventListener("click", function (){setDrawingMode("free");});
+
+
+document.getElementById('freediv').addEventListener("click", function (){inputeffect(freediv);});
+document.getElementById('linediv').addEventListener("click", function (){inputeffect(linediv);});
+document.getElementById('circlediv').addEventListener("click", function (){inputeffect(circlediv);});
+document.getElementById('rectanglediv').addEventListener("click", function (){inputeffect(rectanglediv);});
+
+
+//처음 실행시 선택된 free에 효과주기
+const imageContainer = document.getElementById('freediv');
+const shimmerEffect = document.createElement('div');
+shimmerEffect.classList.add('shimmer-effect');
+imageContainer.appendChild(shimmerEffect);
+
+//선택된 div에 효과넣기
+function inputeffect(seleffect){
+  removeEffect();
+  const imageContainer = seleffect;
+  const shimmerEffect = document.createElement('div');
+  shimmerEffect.classList.add('shimmer-effect');
+  imageContainer.appendChild(shimmerEffect);
+}
+
+//효과 삭제
+function removeShimmerEffect(elementId) {
+  const imageContainer = document.getElementById(elementId);
+  const shimmerEffect = imageContainer.querySelector('.shimmer-effect');
+  if (shimmerEffect) {
+    imageContainer.removeChild(shimmerEffect);
+  }
+}
+
+function removeEffect(){
+  removeShimmerEffect('rectanglediv');
+  removeShimmerEffect('circlediv');
+  removeShimmerEffect('freediv');
+  removeShimmerEffect('linediv');
+}
+
+
+
 
 //클리어, 다운로드버튼 이벤트 리스너 추가
 clearBtn.addEventListener("click", clearCanvas);
@@ -102,44 +147,3 @@ function stopDrawing() {
   startY = undefined;
   subContext.drawImage(canvas,0,0);
 }
-
-
-/*
-                <div class="canvas">
-                  <div class="menuBar">
-                    <div class="option">
-                      <label for="selColor">색상:</label>
-                      <input type="color" id="selColor">
-                    </div>
-                    <div class="option">
-                      <label for="selLineWidth">굵기:</label>
-                      <input type="number" id="selLineWidth" value="5">
-                    </div>
-                    <div class="option select">
-                      <div class="free list-inline">
-                        <img src="free.png" alt="loading fail" id="free">
-                      </div>
-                      <div class="line">
-                        <img src="line.png" alt="loading fail" id="line">
-                      </div>
-                      <div class="circle">
-                        <img src="circle.png" alt="loading fail" id="circle">
-                      </div>
-                      <div class="rectangle">
-                        <img src="rectangle.png" alt="loading fail" id="rectangle">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="drawingField">
-                    <canvas id="myCanvas" width="1000" height="600" style="border: 2px solid black"></canvas>
-                  </div>
-                  <div>
-                    <a id="clear">
-                      <button class="btn btn-default" type="button">Clear</button>
-                    </a>
-                    <a id="download">
-                      <button class="btn btn-default" type="button">Image Download</button>
-                    </a>
-                  </div>
-                </div>
- */
