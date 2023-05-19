@@ -41,6 +41,7 @@
 	  display: none;
 	}
 </style>
+<link rel="stylesheet" href="pages/canvas.css">
 <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
 </head>
@@ -297,11 +298,54 @@
 						<div style="clear: both;"></div>
 
 						<div class="filter-canvas-items">
-							<div class="filter-canvas-item all myroro"><!-- 날아라 케로로 -->
-								<div class="container">
-									<div class="row roomy-40">
-										<h4>케로로 창작마당</h4>
+							<div class="filter-canvas-item all drawing" id="drawing-canvas">
+								<div class="roomy-40 text-center">
+									<h4>Free Drawing</h4>
+								</div>
+								<!-- 그림판 -->
+								<div class="canvas" id="main-canvas">
+									<div class="menuBar">
+										<div class="option select" id="option-select" >
+											<div class="option">
+												<div class="option">
+													<input type="number" id="selLineWidth" value="5">
+												</div>
+												<input type="color" id="selColor">
+											</div>
+											<div class="image-container" id="freediv">
+												<img src="pages/free.png" alt="loading fail" id="free" >
+											</div>
+											<div class="image-container" id="linediv">
+												<img src="pages/line.png" alt="loading fail" id="line" >
+											</div>
+											<div class="image-container" id="circlediv">
+												<img src="pages/circle.png" alt="loading fail" id="circle" >
+											</div>
+											<div class="image-container" id="rectanglediv">
+												<img src="pages/rectangle.png" alt="loading fail" id="rectangle">
+											</div>
+										</div>
 									</div>
+									<div class="drawingField" id="drawingField" >
+										<canvas id="myCanvas" width="1000" height="600"></canvas>
+									</div>
+								</div>
+								<!--그림판end-->
+								<div class="text-center">
+									<a id="clear">
+										<button class="btn btn-default" id="clear-button" type="button">Clear</button>
+									</a>
+									<a id="download">
+										<button class="btn btn-default" id="download-button" type="button">Download</button>
+									</a>
+								</div>
+							</div>
+
+							<div class="filter-canvas-item all myroro roomy-70"><!-- 날아라 케로로 -->
+								<div class="roomy-40 text-center">
+									<h4>케로로 창작마당</h4>
+								</div>
+								<div class="container">
 									<div class="row">
 										<div class="col-md-2">
 											캐릭터 :
@@ -334,8 +378,8 @@
 									</div>
 								</div>
 								<br>
-								<div>
-									<canvas id="flyingcanvas" width="1000px" height="500px"></canvas>
+								<div class="text-center">
+									<canvas id="flyingcanvas" width="1000" height="600"></canvas>
 									<br> 
 									<a class="btn btn-default" id="clearRoro">Clear</a>
 									<a class="btn btn-default" id="downloadRoro">Download</a>
@@ -465,6 +509,7 @@
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/keroroCanvas.js"></script>
+	<script src="pages/OSH_canvas.js"></script>
 <script>
    const filterCanvasButtons = document.querySelectorAll('.filter-canvas-buttons .button');
    const filterCanvasItems = document.querySelectorAll('.filter-canvas-items .filter-canvas-item');
