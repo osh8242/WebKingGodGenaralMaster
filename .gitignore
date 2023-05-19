@@ -26,8 +26,11 @@ replay_pid*
 /Servers/
 /.metadata/
 WhoWeAre2/.metadata/
-
+.vscode/
+.gitignore
+/.gitignore
 # 인텔리제이
 .idea/*.iml
 .idea/*.xml
 .idea/inspectionProfiles/*.xml
+

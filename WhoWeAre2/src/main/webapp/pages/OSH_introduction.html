@@ -31,20 +31,10 @@
 
   <!--Theme Responsive css-->
   <link rel="stylesheet" href="../assets/css/responsive.css" />
-  <style type="text/css">
-    .filter-item {
-      display: block;
-      margin-bottom: 10px;
-    }
+  <!-- Canvas css -->
 
-    .filter-item.hide {
-      display: none;
-    }
-    .home{
-      background: url(../assets/images/osh-bg.jpg) no-repeat top center;
-      background-size: cover;
-    }
-  </style>
+  <link rel="stylesheet" href="canvas.css"/>
+
   <script src="../assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
 </head>
@@ -242,7 +232,7 @@
   <!-- End off Business section -->
 
   <!--About Section-->
-  <section class="about bg-yellow roomy-50">
+  <section class="about bg-yellow roomy-50">  
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -275,46 +265,48 @@
             <div style="clear: both;"></div>
 
             <div class="filter-canvas-items">
-              <div class="filter-canvas-item all drawing">
+              <div class="filter-canvas-item all drawing" id="drawing-canvas">
                 <!-- 그림판 -->
-                <div class="canvas">
+                <div class="canvas" id="main-canvas">
                   <div class="menuBar">
-                    <div class="option">
-                      <label for="selColor">색상:</label>
-                      <input type="color" id="selColor">
-                    </div>
-                    <div class="option">
-                      <label for="selLineWidth">굵기:</label>
-                      <input type="number" id="selLineWidth" value="5">
-                    </div>
-                    <div class="option select">
-                      <div class="free list-inline">
-                        <img src="free.png" alt="loading fail" id="free">
+                 
+                    
+                   
+                    <div class="option select" id="option-select" >
+                      <div class="option">
+                        <div class="option">
+                          <input type="number" id="selLineWidth" value="5">
+                        </div>
+                        <input type="color" id="selColor">
                       </div>
-                      <div class="line">
-                        <img src="line.png" alt="loading fail" id="line">
+                      <div class="image-container" id="freediv">
+                        <img src="free.png" alt="loading fail" id="free" >
                       </div>
-                      <div class="circle">
-                        <img src="circle.png" alt="loading fail" id="circle">
+                      <div class="image-container" id="linediv">
+                        <img src="line.png" alt="loading fail" id="line" >
                       </div>
-                      <div class="rectangle">
+                      <div class="image-container" id="circlediv">
+                        <img src="circle.png" alt="loading fail" id="circle" >
+                      </div>
+                      <div class="image-container" id="rectanglediv">
                         <img src="rectangle.png" alt="loading fail" id="rectangle">
                       </div>
                     </div>
                   </div>
-                  <div class="drawingField">
-                    <canvas id="myCanvas" width="1000" height="600" style="border: 2px solid black"></canvas>
+                  <div class="drawingField" id="drawingField" >
+                    <canvas id="myCanvas" width="1000" height="600"></canvas>
                   </div>
-                  <div>
-                    <a id="clear">
-                      <button class="btn btn-default" type="button">Clear</button>
-                    </a>
-                    <a id="download">
-                      <button class="btn btn-default" type="button">Image Download</button>
-                    </a>
-                  </div>
+                  
                 </div>
                 <!--그림판end-->
+                <div style="text-align: center;">
+                  <a id="clear">
+                    <button class="btn btn-default" id="clear-button" type="button">Clear</button>
+                  </a>
+                  <a id="download">
+                    <button class="btn btn-default2" id="download-button" type="button">Image Download</button>
+                  </a>
+                </div>
               </div>
 
               <div class="filter-canvas-item all myroro"><!-- 날아라 케로로 -->
@@ -360,6 +352,7 @@
 </div>
 
 <!-- JS includes -->
+
 <script src="OSH_canvas.js"></script>
 <script src="../assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="../assets/js/vendor/bootstrap.min.js"></script>
