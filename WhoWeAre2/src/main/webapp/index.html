@@ -29,6 +29,9 @@
 <!--Theme custom css -->
 <link rel="stylesheet" href="assets/css/style.css">
 
+<!-- 맵css -->
+<link href="./pages/jangdae_KakaoMapLine.css" rel="stylesheet">
+
 <!--Theme Responsive css-->
 <link rel="stylesheet" href="assets/css/responsive.css" />
 <style type="text/css">
@@ -401,75 +404,25 @@
 			</div>
 		</section>
 
-
-
-		<section id="kakaomap" class="portfolio margin-top-120">
+		<section id="kakaomap" class="portfolio margin-top-120 roomy-80">
 			<div class="container">
-				<div class="row">
-					<div class="main-portfolio roomy-80">
-						<div class="col-md-4">
-							<div class="head_title text-left sm-text-center wow fadeInDown">
-								<h2>KaKaoMap</h2>
-							</div>
-						</div>
-
-						<div class="col-md-8">
-							<div class="filter-map-buttons text-right sm-text-center">
-								<button class="btn button" data-filter="allmap">All</button>
-								<button class="btn button" data-filter="standard">Standard</button>
-								<button class="btn button" data-filter="marker">Marker</button>
-							</div>
-						</div>
-							<div class="filter-map-items">
-								<div class="text-center filter-map-item allmap standard">
-									<div id="map" style="width: 100%; height: 500px;"></div>
-								</div>
-								
-								<div class="text-center filter-map-item allmap marker">
-									<div id="map2" style="width:100%;height:500px;"></div>
-								</div>
-							</div>
-						</div>
-							<script type="text/javascript"src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a346adfad51cd8a8bce9059ba1dff12"></script>
-							<script>
-							
-							/* standard 지도 */
-							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-						    mapOption = { 
-						        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-						        level: 3 // 지도의 확대 레벨
-						    };
-						
-							// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-							var map = new kakao.maps.Map(mapContainer, mapOption); 
-						
-							
-							
-							/* 마커 지도 */
-							var mapContainer2 = document.getElementById('map2'), // 지도를 표시할 div 
-							    mapOption2 = { 
-							        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-							        level: 3 // 지도의 확대 레벨
-							    };
-							
-							var map2 = new kakao.maps.Map(mapContainer2, mapOption2); // 지도를 생성합니다
-							
-							// 마커가 표시될 위치입니다 
-							var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
-							
-							// 마커를 생성합니다
-							var marker = new kakao.maps.Marker({
-							    position: markerPosition
-							});
-							
-							// 마커가 지도 위에 표시되도록 설정합니다
-							marker.setMap(map2);
-							
-							// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-							// marker.setMap(null);    
-							</script>
+				<div class="col-md-4">
+					<div class="head_title text-left sm-text-center wow fadeInDown">
+						<h2>KakaoMap API</h2>
 					</div>
 				</div>
+				<div id="map" style="width:100%;height:600px;"></div>
+				<div class="col-md-3 roomy-40">
+					<!-- 삭제버튼 -->
+					<button type="button" class="btn btn-default" id="clearBtn">Reset</button>
+				</div>
+
+				<div class="col-md-6 text-center roomy-40">
+					<em>지도를 마우스로 클릭하면 선 그리기가 시작되고<br>오른쪽 마우스를 클릭하면 선 그리기가 종료됩니다</em>
+				</div>
+
+
+			</div>
 		</section>
 
 
@@ -535,5 +488,8 @@
       });
    }
 </script>
+<!-- 맵js -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3423aad1e9daf0e1ea3ceadb272e1711"></script>
+<script src="./pages/jangdae_KakaoMapLine.js"></script>
 </body>
 </html>
