@@ -104,15 +104,6 @@
     margin-left: 15px;
 }
 
-#clear-button{
-    width: 280px;
-}
-
-#download-button{
-    width: 280px;
-    margin-right: 50px;
-}
-
 #myCanvas{
     border: 2px solid black;
 }

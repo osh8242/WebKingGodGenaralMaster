@@ -29,6 +29,9 @@
 <!--Theme custom css -->
 <link rel="stylesheet" href="assets/css/style.css">
 
+<!-- 맵css -->
+<link href="./pages/jangdae_KakaoMapLine.css" rel="stylesheet">
+
 <!--Theme Responsive css-->
 <link rel="stylesheet" href="assets/css/responsive.css" />
 <style type="text/css">
@@ -41,6 +44,7 @@
 	  display: none;
 	}
 </style>
+<link rel="stylesheet" href="pages/canvas.css">
 <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
 </head>
@@ -156,7 +160,7 @@
 										<div class="separator"></div>
 										<ul class="list-inline">
 											<li><a href="https://github.com/osh8242"><i class="fa fa-github"></i></a></li>
-											<li><a href=""><i class="fa fa-home"></i></a></li>
+											<li><a href="pages/OSH_introduction.html"><i class="fa fa-home"></i></a></li>
 										</ul>
 									</div>
 									<!-- End off col-md-4 -->
@@ -297,11 +301,54 @@
 						<div style="clear: both;"></div>
 
 						<div class="filter-canvas-items">
-							<div class="filter-canvas-item all myroro"><!-- 날아라 케로로 -->
-								<div class="container">
-									<div class="row roomy-40">
-										<h4>케로로 창작마당</h4>
+							<div class="filter-canvas-item all drawing" id="drawing-canvas">
+								<div class="roomy-40 text-center">
+									<h4>Free Drawing</h4>
+								</div>
+								<!-- 그림판 -->
+								<div class="canvas" id="main-canvas">
+									<div class="menuBar">
+										<div class="option select" id="option-select" >
+											<div class="option">
+												<div class="option">
+													<input type="number" id="selLineWidth" value="5">
+												</div>
+												<input type="color" id="selColor">
+											</div>
+											<div class="image-container" id="freediv">
+												<img src="pages/free.png" alt="loading fail" id="free" >
+											</div>
+											<div class="image-container" id="linediv">
+												<img src="pages/line.png" alt="loading fail" id="line" >
+											</div>
+											<div class="image-container" id="circlediv">
+												<img src="pages/circle.png" alt="loading fail" id="circle" >
+											</div>
+											<div class="image-container" id="rectanglediv">
+												<img src="pages/rectangle.png" alt="loading fail" id="rectangle">
+											</div>
+										</div>
 									</div>
+									<div class="drawingField" id="drawingField" >
+										<canvas id="myCanvas" width="1000" height="600"></canvas>
+									</div>
+								</div>
+								<!--그림판end-->
+								<div class="text-center">
+									<a id="clear">
+										<button class="btn btn-default" id="clear-button" type="button">Clear</button>
+									</a>
+									<a id="download">
+										<button class="btn btn-default" id="download-button" type="button">Download</button>
+									</a>
+								</div>
+							</div>
+
+							<div class="filter-canvas-item all myroro roomy-70"><!-- 날아라 케로로 -->
+								<div class="roomy-40 text-center">
+									<h4>케로로 창작마당</h4>
+								</div>
+								<div class="container">
 									<div class="row">
 										<div class="col-md-2">
 											캐릭터 :
@@ -334,8 +381,8 @@
 									</div>
 								</div>
 								<br>
-								<div>
-									<canvas id="flyingcanvas" width="1000px" height="500px"></canvas>
+								<div class="text-center">
+									<canvas id="flyingcanvas" width="1000" height="600"></canvas>
 									<br> 
 									<a class="btn btn-default" id="clearRoro">Clear</a>
 									<a class="btn btn-default" id="downloadRoro">Download</a>
@@ -357,75 +404,25 @@
 			</div>
 		</section>
 
-
-
-		<section id="kakaomap" class="portfolio margin-top-120">
+		<section id="kakaomap" class="portfolio margin-top-120 roomy-80">
 			<div class="container">
-				<div class="row">
-					<div class="main-portfolio roomy-80">
-						<div class="col-md-4">
-							<div class="head_title text-left sm-text-center wow fadeInDown">
-								<h2>KaKaoMap</h2>
-							</div>
-						</div>
-
-						<div class="col-md-8">
-							<div class="filter-map-buttons text-right sm-text-center">
-								<button class="btn button" data-filter="allmap">All</button>
-								<button class="btn button" data-filter="standard">Standard</button>
-								<button class="btn button" data-filter="marker">Marker</button>
-							</div>
-						</div>
-							<div class="filter-map-items">
-								<div class="text-center filter-map-item allmap standard">
-									<div id="map" style="width: 100%; height: 500px;"></div>
-								</div>
-								
-								<div class="text-center filter-map-item allmap marker">
-									<div id="map2" style="width:100%;height:500px;"></div>
-								</div>
-							</div>
-						</div>
-							<script type="text/javascript"src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8a346adfad51cd8a8bce9059ba1dff12"></script>
-							<script>
-							
-							/* standard 지도 */
-							var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-						    mapOption = { 
-						        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-						        level: 3 // 지도의 확대 레벨
-						    };
-						
-							// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-							var map = new kakao.maps.Map(mapContainer, mapOption); 
-						
-							
-							
-							/* 마커 지도 */
-							var mapContainer2 = document.getElementById('map2'), // 지도를 표시할 div 
-							    mapOption2 = { 
-							        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-							        level: 3 // 지도의 확대 레벨
-							    };
-							
-							var map2 = new kakao.maps.Map(mapContainer2, mapOption2); // 지도를 생성합니다
-							
-							// 마커가 표시될 위치입니다 
-							var markerPosition  = new kakao.maps.LatLng(33.450701, 126.570667); 
-							
-							// 마커를 생성합니다
-							var marker = new kakao.maps.Marker({
-							    position: markerPosition
-							});
-							
-							// 마커가 지도 위에 표시되도록 설정합니다
-							marker.setMap(map2);
-							
-							// 아래 코드는 지도 위의 마커를 제거하는 코드입니다
-							// marker.setMap(null);    
-							</script>
+				<div class="col-md-4">
+					<div class="head_title text-left sm-text-center wow fadeInDown">
+						<h2>KakaoMap API</h2>
 					</div>
 				</div>
+				<div id="map" style="width:100%;height:600px;"></div>
+				<div class="col-md-3 roomy-40">
+					<!-- 삭제버튼 -->
+					<button type="button" class="btn btn-default" id="clearBtn">Reset</button>
+				</div>
+
+				<div class="col-md-6 text-center roomy-40">
+					<em>지도를 마우스로 클릭하면 선 그리기가 시작되고<br>오른쪽 마우스를 클릭하면 선 그리기가 종료됩니다</em>
+				</div>
+
+
+			</div>
 		</section>
 
 
@@ -465,6 +462,7 @@
 	<script src="assets/js/plugins.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/keroroCanvas.js"></script>
+	<script src="pages/OSH_canvas.js"></script>
 <script>
    const filterCanvasButtons = document.querySelectorAll('.filter-canvas-buttons .button');
    const filterCanvasItems = document.querySelectorAll('.filter-canvas-items .filter-canvas-item');
@@ -490,5 +488,8 @@
       });
    }
 </script>
+<!-- 맵js -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3423aad1e9daf0e1ea3ceadb272e1711"></script>
+<script src="./pages/jangdae_KakaoMapLine.js"></script>
 </body>
 </html>
