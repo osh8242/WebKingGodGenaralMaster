@@ -29,8 +29,8 @@ window.onload = function() {
         if(selroro == 'hyun'){followImg.src = "assets/images/푸루루-removebg-preview.png";}
         if(selroro == 'nam'){followImg.src = "assets/images/타마마-removebg-preview.png";}
         if(selroro == 'seo'){followImg.src = "assets/images/도로로-removebg-preview.png";}
+        if(selroro == 'teacher'){followImg.src = "assets/images/teacher.png";}
     }
-
 
 
     //케로로 캔버스 클릭 이벤트 (subcanvas복붙 저장)
