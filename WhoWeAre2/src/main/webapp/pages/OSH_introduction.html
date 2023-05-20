@@ -35,6 +35,8 @@
 
   <link rel="stylesheet" href="canvas.css"/>
 
+  <link rel="stylesheet" href="OSH_introduction.css"/>
+
   <script src="../assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
 </head>
@@ -70,8 +72,9 @@
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="../index.html">Home</a></li>
-          <li><a href="OSH_canvas.html">Canvas</a></li>
-          <li><a href="OSH_kakaoMap.html">KakaoMap</a></li>
+          <li><a href="#profile">Profile</a></li>
+          <li><a href="#mbti">MBTI</a></li>
+          <li><a href="#skills">Skills</a></li>
         </ul>
       </div>
       <!-- /.navbar-collapse -->
@@ -87,9 +90,10 @@
           <div class="col-md-12">
             <div class="hello">
               <div class="slid_item">
-                <div class="home_text ">
+                <div class="home_text gif-container">
                   <h1 class="text-yellow">Nice to Meet You!</h1>
-                  <h2 class="text-white text-uppercase">- 승환 -</h2>
+                  <h2 class="text-white">from 승환</h2>
+                  <img src="../assets/images/졸귀탱%20케로로.gif">
                 </div>
               </div>
               <!-- End off slid item -->
@@ -97,11 +101,7 @@
           </div>
         </div>
 
-        <a href="#about">
-          <span class="mouse"><span class="mouse-movement"></span> </span>
-          <span class="mouse-message fadeIn">Explore</span>
-          <br>
-        </a>
+
       </div>
       <!--End off row-->
     </div>
@@ -110,7 +110,7 @@
   <!--End off Home Sections-->
 
   <!--About Section-->
-  <section id="about" class="about bg-yellow roomy-80">
+  <section id="about" class="about bg-yellow roomy-50">
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
@@ -121,12 +121,57 @@
   </section>
 
   <!--Team And Skill Section-->
-  <section id="teams" class="teams roomy-80">
+  <section id="profile" class="teams roomy-50">
     <div class="container">
       <div class="row">
-        <div class="main_teams_content fix">
+        <div class="slideshow-container center-block" id="gallery-box">
+          <div class="mySlides fadeout center-block">
+            <img class="gallery center-block img-rounded" src="OSH_assets/초딩승환.jpg">
+          </div>
 
+          <div class="mySlides fadeout center-block">
+            <img class="gallery center-block img-rounded" src="OSH_assets/고딩승환.jpg">
+          </div>
 
+          <div class="mySlides fadeout center-block">
+            <img class="gallery center-block img-rounded" src="OSH_assets/대딩승환.jpg">
+          </div>
+
+          <div class="mySlides fadeout center-block">
+            <img class="gallery center-block img-rounded" src="OSH_assets/교생승환.jpeg">
+          </div>
+
+          <div class="mySlides fadeout center-block">
+            <img class="gallery center-block img-rounded" src="OSH_assets/전성기승환.png">
+          </div>
+
+          <div class="mySlides fadeout center-block">
+            <img class="gallery center-block img-rounded" src="OSH_assets/예비군승환.jpg">
+          </div>
+
+          <div class="mySlides fadeout center-block">
+            <img class="gallery center-block img-rounded" src="OSH_assets/현재승환.jpg">
+          </div>
+
+          <a class="icon prev text-black" id="img-prev">❮</a>
+          <a class="icon next text-black" id="img-next">❯</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center">
+          <span class="dot" id="dot1" title="초딩승환"></span>
+          <span class="dot" id="dot2" title="고딩승환"></span>
+          <span class="dot" id="dot3" title="대딩승환"></span>
+          <span class="dot" id="dot4" title="교생승환"></span>
+          <span class="dot" id="dot5" title="전성기승환"></span>
+          <span class="dot" id="dot6" title="에비군승환"></span>
+          <span class="dot" id="dot7" title="현재승환"></span>
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="main_teams_content fix roomy-50">
           <div class="mb-3">
             <div class="teams_item">
               <div class="head_title">
@@ -165,10 +210,8 @@
                       <td>Hobby</td><td>&nbsp;&nbsp;:&nbsp;&nbsp;</td> <td> <strong>Music, CodingTest, Movie, Drama, etc..</strong></td>
                     </tr>
                   </table>
-
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -187,25 +230,43 @@
     </div>
   </section>
 
-  <!--service Section-->
-  <section id="service" class="service bg-grey roomy-70">
+  <!--MBTI Section-->
+  <section id="mbti" class="service bg-white">
+    <div class="header">
+      <img src="https://www.16personalities.com/static/images/personality-types/headers/analysts_Logician_INTP_personality_header.svg">
+    </div>
     <div class="container">
       <div class="row">
         <div class="main_service">
           <div class="col-md-6">
             <div class="service_slid">
-              <div class="slid_shap bg-yellow"></div>
               <div class="service_slid_item text-center">
-                <div class="service_slid_text" >
-                  <span class="icon icon icon-tools text-black"></span>
-                  <h5 class="text-black m-top-20">Canvas</h5>
+                <!--자동슬라이드-->
+                <div class="service_slid_text img-rounded">
+                  <img
+                          src="../assets/images/intp.png"
+                          alt=""
+                          style="display: inline"
+                          width="500px"
+                          height="500px"
+                  />
                 </div>
                 <div class="service_slid_text">
                   <!-- <span class="icon icon icon-sports-2 text-black"></span>  -->
-                  <div style="display: block;margin-left: auto;margin-right: auto; text-align: center ">
-                    <img src="../assets/images/kakaomapicon.png" alt=""  style="display: inline"/>
+                  <div
+                          style="
+                          display: block;
+                          margin-left: auto;
+                          margin-right: auto;
+                          text-align: center;
+                        "
+                  >
+                    <img
+                            src="../assets/images/mbti_lazy.jpg"
+                            alt=""
+                            style="display: inline"
+                    />
                   </div>
-                  <h5 class="text-black m-top-20">Kakaomap</h5>
                 </div>
               </div>
             </div>
@@ -213,15 +274,13 @@
           <div class="col-md-5 col-md-offset-1">
             <div class="service_item sm-m-top-50">
               <div class="head_title">
-                <h2 class="text-uppercase">
-                  Our <strong>Service</strong>
+                <h2 class="text-uppercase" style="margin-top: 200px">
+                  MY <strong>MBTI</strong>
                 </h2>
               </div>
               <div class="service_content">
-                <p>
-                  1. Canvas <br>
-                  2. Kakaomap <br>
-                </p>
+                <h2>ISFJ</h2>
+                <br />
               </div>
             </div>
           </div>
@@ -229,89 +288,7 @@
       </div>
     </div>
   </section>
-  <!-- End off Business section -->
-
-  <!--About Section-->
-  <section class="about bg-yellow roomy-50">  
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="main_about text-center"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="canvas" class="portfolio margin-top-120">
-    <!-- Portfolio container-->
-    <div class="container">
-      <div class="row">
-        <div class="main-portfolio roomy-80">
-          <div class="col-md-4">
-            <div class="head_title text-left sm-text-center wow fadeInDown">
-              <h2>Canvas</h2>
-            </div>
-          </div>
-
-          <div><!-- package -->
-            <div class="col-md-8">
-              <div class="filter-canvas-buttons text-right sm-text-center">
-                <button class="btn button" data-filter="all">All</button>
-                <button class="btn button" data-filter="drawing">Drawing</button>
-                <button class="btn button" data-filter="myroro">Myroro</button>
-              </div>
-            </div>
-
-          <div style="clear: both;"></div>
-
-            <div class="filter-canvas-items">
-              <div class="filter-canvas-item all drawing" id="drawing-canvas">
-                <!-- 그림판 -->
-                <div class="canvas" id="main-canvas">
-                  <div class="menuBar">
-                    <div class="option select" id="option-select" >
-                      <div class="option">
-                        <div class="option">
-                          <input type="number" id="selLineWidth" value="5">
-                        </div>
-                        <input type="color" id="selColor">
-                      </div>
-                      <div class="image-container" id="freediv">
-                        <img src="pages/free.png" alt="loading fail" id="free" >
-                      </div>
-                      <div class="image-container" id="linediv">
-                        <img src="pages/line.png" alt="loading fail" id="line" >
-                      </div>
-                      <div class="image-container" id="circlediv">
-                        <img src="pages/circle.png" alt="loading fail" id="circle" >
-                      </div>
-                      <div class="image-container" id="rectanglediv">
-                        <img src="pages/rectangle.png" alt="loading fail" id="rectangle">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="drawingField" id="drawingField" >
-                    <canvas id="myCanvas" width="1000" height="600"></canvas>
-                  </div>
-                </div>
-                <!--그림판end-->
-                <div style="text-align: center;">
-                  <a id="clear">
-                    <button class="btn btn-default" id="clear-button" type="button">Clear</button>
-                  </a>
-                  <a id="download">
-                    <button class="btn btn-default" id="download-button" type="button">Image Download</button>
-                  </a>
-                </div>
-              </div>
-          </div>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- End off MBTI section -->
 
 
   <section class="about bg-yellow roomy-50">
@@ -324,6 +301,31 @@
     </div>
   </section>
 
+  <!--SKILL Section-->
+  <section id="skills" class="teams roomy-80">
+    <div class="container">
+      <div class="row">
+        <div class="main_teams_content fix">
+          <div class="mb-3">
+            <div class="teams_item">
+              <div class="head_title">
+                <h2 class="text-uppercase"><strong>SKILL</strong></h2>
+              </div>
+              <div>
+                <div style="display: flex">
+                  <div class="floating-element"><h3>JAVA</h3></div>
+                  <div class="floating-element"><h3>SQL</h3></div>
+                  <div class="floating-element"><h3>HTML</h3></div>
+                  <div class="floating-element"><h3>CSS</h3></div>
+                  <div class="floating-element"><h3>JavaScript</h3></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
 
@@ -344,8 +346,7 @@
 </div>
 
 <!-- JS includes -->
-
-<script src="OSH_canvas.js"></script>
+<script src="OSH_introduction.js"></script>
 <script src="../assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="../assets/js/vendor/bootstrap.min.js"></script>
 
@@ -358,35 +359,10 @@
 <script src="../assets/js/jquery.collapse.js"></script>
 <script src="../assets/js/bootsnav.js"></script>
 
-<script
-        src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
 <script src="../assets/js/plugins.js"></script>
 <script src="../assets/js/main.js"></script>
-<script>
-  const filterCanvasButtons = document.querySelectorAll('.filter-canvas-buttons .button');
-  const filterCanvasItems = document.querySelectorAll('.filter-canvas-items .filter-canvas-item');
-  dataFilter(filterCanvasButtons, filterCanvasItems);
 
-  const filterMapButtons = document.querySelectorAll('.filter-map-buttons button');
-  const filterMapItems = document.querySelectorAll('.filter-map-items .filter-map-item');
-  dataFilter(filterMapButtons, filterMapItems);
-
-  function dataFilter(buttons, items){
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const filter = button.dataset.filter;
-
-        items.forEach((item) => {
-          if (filter === 'all' || item.classList.contains(filter)) {
-            item.classList.remove('hide');
-          } else {
-            item.classList.add('hide');
-          }
-        });
-      });
-    });
-  }
-</script>
 </body>
 </html>
