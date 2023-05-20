@@ -165,5 +165,13 @@ $( function () {
 
 } );
 
+/*우리가 만든 자바스크립트*/
+      window.setInterval(function() {
+		  var gif = document.querySelector('.gif-container');
+		  var img = gif.querySelector('img');
+       	  img.src = img.src;
+	  }, 2000);
+
+
 
 

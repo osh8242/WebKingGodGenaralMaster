@@ -26,6 +26,9 @@ replay_pid*
 /Servers/
 /.metadata/
 
+WhoWeAre2/.metadata/
+.vscode/
+
 # 인텔리제이
 .idea/*.iml
 .idea/*.xml

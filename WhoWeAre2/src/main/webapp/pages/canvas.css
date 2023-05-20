@@ -1,0 +1,109 @@
+ .filter-item {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .filter-item.hide {
+      display: none;
+    }
+    .home{
+      background: url(../assets/images/osh-bg.jpg) no-repeat top center;
+      background-size: cover;
+    }
+
+
+
+    .image-container{
+  position: relative;
+  display: inline-block;
+}
+
+.shimmer-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 51px;
+  height: 51px;
+  box-shadow: 0 0 20px 10px rgba(255, 0, 0, 0.6);  opacity: 0;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  from {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.1;
+  }
+}
+
+#drawing-canvas {
+    flex-wrap: nowrap; 
+    overflow-x: auto;
+}
+
+#main-canvas{
+    width: 100%;
+    display: flex;
+}
+
+#option-select{
+    float: left; 
+    padding-left: 25px;
+}
+
+#selLineWidth{
+    width: 50px;
+    height: 50px;  
+    margin-bottom: 30px;
+}
+
+#selColor{
+    width: 50px;
+    height: 50px; 
+    margin-bottom: 30px;
+}
+
+#freediv{
+    margin-bottom: 30px;
+}
+
+#free{
+    width:50px; 
+    height:50px;
+}
+
+#linediv{
+    display: block;
+}
+
+#line {
+    width:50px; 
+    height:50px;
+    margin-bottom: 30px;
+}
+
+#circlediv{
+    display: block;
+}
+#circle{
+    width:50px; 
+    height:50px;
+    margin-bottom: 30px;
+}
+
+#rectangle{
+    width:50px; 
+    height:50px;
+}
+
+#drawingField{
+    margin-left: 15px;
+}
+
+#myCanvas{
+    border: 2px solid black;
+}

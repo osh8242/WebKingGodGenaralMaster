@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style type="text/css">
+		#bodiv{
+			magin:auto; text-align: center; 
+		}
+		
+		#map{
+			width: 600px; height: 400px; margin: auto;
+		}
+		
+		#canvasset{
+			margin-bottom : 10px;
+		}
+		
+		#selwidth{
+			width: 50px;
+		}
+		#imgs{
+			padding-top :20px;
+		}
+	</style>
+</head>
+<body>
+<div id="bodiv">
+
+	<h1>남동우</h1>
+	<hr>
+		<div id="map" ></div>
+	<hr>		
+		
+		<div id="canvasset">
+			색상 : <input type="color" id="selcolor" value="black">
+			굵기 : <input type="text" id="selwidth" value="1">
+			<span id="imgs">
+				<img src="images/line.PNG"   id="line"	 class="imgs">
+				<img src="images/circle.PNG" id="circle" class="imgs">
+				<img src="images/square.PNG" id="square" class="imgs">
+			</span>
+			<input type="button" id="clear" value="clear"/>
+			<input type="button" id="save" value="save"/>
+			
+		</div>
+	
+		<canvas id="canvas" width="600" height="400" style="border:1px solid black;">
+		
+		</canvas>
+	</div>
+	<hr>
+	
+
+
+
+
+
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fa7aee7f75b3f9e59f8dd43d4b9587ba&libraries=drawing"></script>
+	<script src="kakaomap.js"></script>
+	<script src="canvas.js"></script>
+	
+	
+</body>
+</html>
