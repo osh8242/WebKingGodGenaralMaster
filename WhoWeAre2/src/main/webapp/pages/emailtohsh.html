@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>send email to hsh</title>
+</head>
+<body>
+	<table>
+		<tbody>
+			<tr>
+				<th>제목 <span>*</span></th>
+				<td><input type="text" name="title" style="width: 100%" placeholder="제목을 입력하십시오." required="required"></td>
+			</tr>
+			
+			<tr>
+				<th>이메일 <span>*</span></th>
+				<td>
+					<input type="hidden" id="email" name="email" /> 
+					<input type="text" name="email_1" style="width: 28%" placeholder="이메일을 입력하십시오." required="required" id="email_1">
+					@ <input type="text" name="email_2" style="width: 28%" id="email_2">
+
+					<select class="select_box" style="width: 28%" name="email_3" id="email_3">
+						<option value="etc" selected>직접입력</option>
+						<option value="naver.com">naver.com</option>
+						<option value="nate.com">nate.com</option>
+						<option value="gmail.com">gmail.com</option>
+					</select>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>메일 내용 <span>*</span></th>
+				<td>
+				<textarea name="description" class="smarteditor2" id="description" maxlength="65536" style="width: 100%; height: 300px;">
+				</textarea>
+				</td>
+			</tr>
+			
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="tel" style="width: 100%" placeholder="이름을 입력하십시오." required="required"></td>
+			</tr>
+			
+			<tr>
+				<th>연락처</th>
+				<td><input type="text" id="mobile" name="mobile" style="width: 100%" placeholder="회신 받으실 연락처를 입력하십시오.     (ex 010-1234-5678)">
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+
+	<p style="text-align: center">
+		<button id="btnSave">Send</button>
+	</p>
+	
+</body>
+</html>
