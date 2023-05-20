@@ -3,56 +3,50 @@
 <head>
 <meta charset="utf-8">
 <title>send email to hsh</title>
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="../assets/css/bootstrap.css" />
 </head>
 <body>
-	<table>
-		<tbody>
-			<tr>
-				<th>제목 <span>*</span></th>
-				<td><input type="text" name="title" style="width: 100%" placeholder="제목을 입력하십시오." required="required"></td>
-			</tr>
-			
-			<tr>
-				<th>이메일 <span>*</span></th>
-				<td>
-					<input type="hidden" id="email" name="email" /> 
-					<input type="text" name="email_1" style="width: 28%" placeholder="이메일을 입력하십시오." required="required" id="email_1">
-					@ <input type="text" name="email_2" style="width: 28%" id="email_2">
-
-					<select class="select_box" style="width: 28%" name="email_3" id="email_3">
-						<option value="etc" selected>직접입력</option>
+	<div class="container">
+		<form>
+			<div class="form-group">
+				<label for="title">제목 <span>*</span></label>
+				<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하십시오." required="required">
+			</div>
+			<div class="form-group">
+				<label for="email">이메일 <span>*</span></label>
+				<div class="input-group">
+					<input type="text" class="form-control" id="email_1" name="email_1" placeholder="이메일을 입력하십시오." required="required"> 
+					<span class="input-group-addon">@</span> 
+					<!-- <input type="text" class="form-control" id="email_2" name="email_2">  -->
+					<select class="form-control" id="email_3" name="email_3">
+						<!-- <option value="etc" selected>직접입력</option> -->
 						<option value="naver.com">naver.com</option>
 						<option value="nate.com">nate.com</option>
 						<option value="gmail.com">gmail.com</option>
 					</select>
-				</td>
-			</tr>
-			
-			<tr>
-				<th>메일 내용 <span>*</span></th>
-				<td>
-				<textarea name="description" class="smarteditor2" id="description" maxlength="65536" style="width: 100%; height: 300px;">
-				</textarea>
-				</td>
-			</tr>
-			
-			<tr>
-				<th>이름</th>
-				<td><input type="text" name="tel" style="width: 100%" placeholder="이름을 입력하십시오." required="required"></td>
-			</tr>
-			
-			<tr>
-				<th>연락처</th>
-				<td><input type="text" id="mobile" name="mobile" style="width: 100%" placeholder="회신 받으실 연락처를 입력하십시오.     (ex 010-1234-5678)">
-				</td>
-			</tr>
-			
-		</tbody>
-	</table>
-
-	<p style="text-align: center">
-		<button id="btnSave">Send</button>
-	</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="description">메일 내용 <span>*</span></label>
+				<textarea class="form-control" id="description" name="description" rows="8"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="tel">이름</label>
+				<input type="text" class="form-control" id="tel" name="tel" placeholder="이름을 입력하십시오." required="required">
+			</div>
+			<div class="form-group">
+				<label for="mobile">연락처</label>
+				<input type="text" class="form-control" id="mobile" name="mobile" placeholder="회신 받으실 연락처를 입력하십시오. (ex 010-1234-5678)">
+			</div>
+			<p style="text-align: center;">
+				<button type="submit" class="btn btn-primary">메일 보내기</button>
+				<button type="submit" class="btn" onclick="window.close();">창닫기</button>
+			</p>
+		</form>
+	</div>
 	
+<script src="../assets/js/vendor/jquery-1.11.2.min.js"></script>
+<script src="../assets/js/vendor/bootstrap.min.js"></script>
 </body>
 </html>
