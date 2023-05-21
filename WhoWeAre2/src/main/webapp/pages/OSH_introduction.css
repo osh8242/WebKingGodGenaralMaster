@@ -91,6 +91,10 @@ img {vertical-align: middle;}
     width: 80%;
 }
 
+.korean-font{
+    font-family: "맑은 고딕";
+}
+
 .floating {
     background-color: white;
     animation: float 2s infinite ease-in-out;
@@ -99,7 +103,7 @@ img {vertical-align: middle;}
 .logo{
     width: 200px;
     height: auto;
-    vertical-align: center;
+    vertical-align: middle;
 }
 
 
