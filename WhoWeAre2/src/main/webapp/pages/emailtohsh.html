@@ -3,12 +3,11 @@
 <head>
 <meta charset="utf-8">
 <title>send email to hsh</title>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
 <link rel="stylesheet" href="../assets/css/bootstrap.css" />
 </head>
 <body>
-	<div class="container">
-		<form>
+	<div class="container" style="padding-top : 30px;">
+		<form action = "sendemail.jsp">
 			<div class="form-group">
 				<label for="title">제목 <span>*</span></label>
 				<input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하십시오." required="required">
@@ -41,12 +40,15 @@
 			</div>
 			<p style="text-align: center;">
 				<button type="submit" class="btn btn-primary">메일 보내기</button>
-				<button type="submit" class="btn" onclick="window.close();">창닫기</button>
+				<button type="button" class="btn" onclick="window.close();">창닫기</button>
 			</p>
 		</form>
 	</div>
 	
 <script src="../assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="../assets/js/vendor/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+</script>
 </body>
 </html>

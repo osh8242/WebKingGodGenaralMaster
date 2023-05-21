@@ -56,6 +56,16 @@
 		    width: 300px;
     		text-align: center;
 		}
+		
+		@keyframes jellyAnimation {
+            0% { transform: scale(0.5); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(0.5); }
+        }
+        
+		img.jelly-animation {
+            animation: jellyAnimation 2s infinite;
+        }
 	</style>
 	<script src="../assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
@@ -74,18 +84,14 @@
 									<div class="home_text">
 										<h1 class="text-yellow">Nice to Meet You!</h1>
 										<h2 class="text-white text-uppercase">I'm sohyun</h2>
+										<img src = "../assets/images/단발걸-removebg-preview.png" class="jelly-animation">
 									</div>
 								</div>
 								<!-- End off slid item -->
 							</div>
 						</div>
 					</div>
-
-					<a class="mouse-scroll" href="#about">
-						<span class="mouse"><span class="mouse-movement"></span> </span>
-						<span class="mouse-message fadeIn">Explore</span>
-						<br />
-					</a>
+					
 				</div>
 				<!--End off row-->
 			</div>
