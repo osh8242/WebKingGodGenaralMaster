@@ -1,6 +1,10 @@
 {box-sizing: border-box}
 .mySlides {width:680px; display: none;}
 img {vertical-align: middle;}
+#home{
+    background: url(../assets/images/osh-bg.jpg) no-repeat top center;
+    background-size: cover;
+}
 
 /* Slideshow container */
 .slideshow-container {
