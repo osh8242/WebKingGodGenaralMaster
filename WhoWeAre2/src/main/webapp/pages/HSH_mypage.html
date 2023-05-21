@@ -56,6 +56,16 @@
 		    width: 300px;
     		text-align: center;
 		}
+		
+		@keyframes jellyAnimation {
+            0% { transform: scale(0.5); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(0.5); }
+        }
+        
+		img.jelly-animation {
+            animation: jellyAnimation 2s infinite;
+        }
 	</style>
 	<script src="../assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 </head>
@@ -73,19 +83,15 @@
 								<div class="slid_item">
 									<div class="home_text">
 										<h1 class="text-yellow">Nice to Meet You!</h1>
-										<h2 class="text-white text-uppercase">- HYUN SO HYUN -</h2>
+										<h2 class="text-white text-uppercase">I'm sohyun</h2>
+										<img src = "../assets/images/단발걸-removebg-preview.png" class="jelly-animation">
 									</div>
 								</div>
 								<!-- End off slid item -->
 							</div>
 						</div>
 					</div>
-
-					<a class="mouse-scroll" href="#about">
-						<span class="mouse"><span class="mouse-movement"></span> </span>
-						<span class="mouse-message fadeIn">Explore</span>
-						<br />
-					</a>
+					
 				</div>
 				<!--End off row-->
 			</div>
@@ -135,12 +141,6 @@
 									 <br>
 									 <h3 class="text-uppercase"><strong>CAPABILITY</strong></h3> 
 									 <br>
-										<!-- <div style="display: flex">
-											<div class="floating-element"> HTML </div>
-											<div class="floating-element"> CSS </div>
-											<div class="floating-element"> JavaScript </div>
-										</div>
-										<br> -->
 										<div style="display: flex">
 											<div class="floating-element"> <img src="../assets/images/java.svg"></img> </div>
 											<div class="floating-element"> <img src="../assets/images/jQuery.svg"></img> </div>
@@ -149,9 +149,10 @@
 										</div>
 										<div style="display: flex">
 											<div class="floating-element"><img src="../assets/images/mariadb.svg"></img> </div>
+											<div class="floating-element"><img src="../assets/images/oracle.svg"></img> </div>
 											<div class="floating-element"><img src="../assets/images/javascript.svg"></img> </div>
 											<div class="floating-element"><img src="../assets/images/css.svg"></img> </div>
-											<div class="floating-element"><img src="../assets/images/html.svg"></img> </div>
+											<div class="floating-element"><img src="../assets/images/html.svg"></img></div>
 										</div>
 									</div>
 								</div>
@@ -170,7 +171,7 @@
 						
 							<div class="service_item">
 								<div class="head_title">
-									<h2 class="text-uppercase" style="margin-top: 200px">
+									<h2 class="text-uppercase">
 										MY <strong>MBTI</strong>
 									</h2>
 								</div>
@@ -179,8 +180,7 @@
 										<div class="service_slid_item text-center">
 											<!--자동슬라이드-->
 											<div class="service_slid_text">
-												<img src="../assets/images/ESFP.png" alt="" style="display: inline"
-													width="500px" height="500px" />
+												<img src="../assets/images/ESFP.png" alt="" style="display: inline" />
 											</div>
 											<div class="service_slid_text">
 												<div style=" display: block; margin-left: auto; margin-right: auto;  text-align: center; ">
@@ -192,12 +192,8 @@
 								</div>
 								<div class="service_item sm-m-top-50">
 								<div class="head_title">
-									<h3 class="text-uppercase"><strong>ESFP</strong></h3>
 									<div class="service_content">
-									- 외향적인 (Extraverted): ESFP는 사교적이며 활발한 성격을 가지고 있습니다.<br>
-									- 감각적인 (Sensing): ESFP는 현재의 경험과 사실에 주로 초점을 맞춥니다.<br>
-									- 감정 중심적인 (Feeling): ESFP는 감정에 민감하고 다른 사람들과의 관계에 큰 중요성을 두는 경향이 있습니다.<br>
-									- 인지적인 (Perceiving): ESFP는 새로운 경험을 추구하며 자유롭고 유연한 삶을 선호합니다.
+									<img src="../assets/images/esfp빙고.png">
 									</div>
 								</div>
 							</div>
@@ -219,7 +215,7 @@
 									<h2 class="text-uppercase"><strong>CONTACT ME</strong></h2>
 								</div>
 								<div>
-									<div style="display: flex">
+									<div style="display: flex;justify-content: center;">
 										<ul class="list-inline">
 											<li><div><a href="emailtohsh.html" target="_blank" onclick="openPopupWindow(); return false;"><img src="../assets/images/email.png" style="width:100px; height:100px;"></img></a><br>llikepsh515@gmail.com</div></li>
 											<li><div><img src="../assets/images/call.png" style="width:100px; height:100px;"></img><br>010-5429-7034</div></li>

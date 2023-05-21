@@ -1536,9 +1536,11 @@ tems Section style
   100% { transform: translateY(0); }
 }
 
+
 .floating-element {
-  width: 150px;
+  width: 100px;
   height: 40px;
   background-color: white;
   animation: float 2s infinite ease-in-out;
+  text-align: center;
 }
