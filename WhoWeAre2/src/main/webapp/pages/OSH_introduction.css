@@ -82,6 +82,27 @@ img {vertical-align: middle;}
     animation-duration: 1.5s;
 }
 
+.number {
+    font-family: "Arial Black";
+    color: black;
+}
+
+#mbti-header{
+    width: 80%;
+}
+
+.floating {
+    background-color: white;
+    animation: float 2s infinite ease-in-out;
+}
+
+.logo{
+    width: 200px;
+    height: auto;
+    vertical-align: center;
+}
+
+
 @keyframes fadeout {
     from {opacity: .4}
     to {opacity: 1}
