@@ -82,40 +82,32 @@ window.onload = function() {
 
     //케로로 파일 업로드 해서 배경바꾸기
     let getImageFiles = (e) => {
-        const uploadFiles = [];
         const files = e.currentTarget.files;
+        const file = files[0];
 
-        if ([...files].length > 1) {
-            alert('이미지는 1개만 등록가능합니다.');
-            return;
+        if (files.length > 1) {
+            alert('이미지는 하나만 등록됩니다.');
         }
 
         // 파일 타입 검사
-        [...files].forEach(file => {
-            if (!file.type.match("image/.*")) {
-                alert('이미지 파일만 업로드가 가능합니다.');
-                return
-            }
+        if (!file.type.match("image/.*")) {
+            alert('이미지 파일만 업로드가 가능합니다.');
+            return;
+        }
 
-            // 파일 갯수 검사
-            if ([...files].length == 1) {
-                uploadFiles.push(file);
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    const preview = changeBgImg(e, file);
-                };
-                reader.readAsDataURL(file);
-            }
-        });
+        // 파일 갯수 검사
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            const preview = changeBgImg(e);
+        };
+        reader.readAsDataURL(file);
     }
+
     let changeBgImg = (e, file) => {
         backImg.src= e.target.result;
     }
 
     const realUpload = document.querySelector('.real-upload');
-    const upload = document.querySelector('.upload');
-
-    upload.addEventListener('click', () => realUpload.click());
     realUpload.addEventListener('change', getImageFiles);
 
 }
